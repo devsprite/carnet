@@ -21,7 +21,6 @@ class letsenscarnetaddcarnetModuleFrontController extends ModuleFrontController
         $this->context->smarty->assign(array(
             'confirmation' => $this->confirmation,
             'mails' => $this->params,
-            'date_jour' => date('d-m-Y'),
             'customer_name' => $customer->lastname . ' ' . $customer->firstname,
             'name_contacts' => $this->getContacts(),
             'last_carnet' => $lastCarnet,
@@ -50,6 +49,7 @@ class letsenscarnetaddcarnetModuleFrontController extends ModuleFrontController
                 $data['customer_name'] = $customer->lastname . ' ' . $customer->firstname;
                 $data['name_contact'] = (isset($contact->name[1])) ? $contact->name[1] : '';
                 $data['id_contact'] = (isset($contact->id)) ? $contact->id : '';
+                $data['date_form'] = Tools::getValue('date_form');
                 $data['poids'] = Tools::getValue('poids');
                 $data['poids_evolution'] = (isset($data_pre['poids']))
                     ? $this->evolution(Tools::getValue('poids'), $data_pre['poids'])
@@ -78,13 +78,8 @@ class letsenscarnetaddcarnetModuleFrontController extends ModuleFrontController
                 $data['cuisse_differrence'] = (isset($data_pre['cuisse']))
                     ? $this->differrence(Tools::getValue('cuisse'), $data_pre['cuisse'])
                     : '';
+
                 $data['inputs_sante'] = implode(',', Tools::getValue('inputs_sante'));
-//                $data['sante_digestif'] = Tools::getValue('sante_digestif');
-//                $data['sante_transit'] = Tools::getValue('sante_transit');
-//                $data['sante_stress'] = Tools::getValue('sante_stress');
-//                $data['sante_fatigue'] = Tools::getValue('sante_fatigue');
-//                $data['sante_sommeil'] = Tools::getValue('sante_sommeil');
-//                $data['sante_medical'] = Tools::getValue('sante_medical');
                 $data['sante_autre'] = Tools::getValue('sante_autre');
                 $data['activite_physique'] = Tools::getValue('activite_physique');
                 $data['activite_physique_heure'] = Tools::getValue('activite_physique_heure');
@@ -126,7 +121,14 @@ class letsenscarnetaddcarnetModuleFrontController extends ModuleFrontController
                 $this->errors['contact'] = $this->helperError($this->module->l('Erreur'));
             }
 
+            if ($data_pre['date_add'] >= $data['date_form']) {
+                $this->errors[] = Tools::displayError('Vous avez déjà enregistré un carnet de suivi aujourd\'hui.');
+            }
+
             if (!$this->errors) {
+
+                p($data_pre);
+                ddd($data);
                 if (!Db::getInstance()->insert($this->module->tableName, $data)) {
                     $this->errors[] = Tools::displayError('Erreur : veuillez recommencer');
                 } else {
