@@ -1,0 +1,46 @@
+.submitCarnet {
+    margin-top: 1em;
+}
+
+.alert-danger {
+    text-shadow: none!important;
+}
+
+.carnet-icon-check {
+    background-image: url("../images/check-icon.png");
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top:6px;
+    margin-left: 12px;
+}
+
+.carnet-icon-error {
+    background-image: url("../images/erreur-icon.png");
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top:6px;
+    margin-left: 12px;
+}
+
+.smiley-positif {
+    background-image: url("../images/smiley_positif.png");
+}
+
+.smiley-negatif {
+    background-image: url("../images/smiley_negatif.png");
+}
+
+.smiley-neutre {
+    background-image: url("../images/smiley_neutre.png");
+
+}
+
+.smiley {
+    display: inline-block!important;
+    min-width: 20px;
+    height: 20px;
+    position: relative;
+    top:4px;
+}
