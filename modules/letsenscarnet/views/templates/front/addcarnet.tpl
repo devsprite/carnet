@@ -144,10 +144,13 @@
                 <label for="inputs_sante">Durant la semaine écoulée...</label>
             </div>
             <div class="col-xs-8">
+
                 {foreach item=input_sante from=$inputs_sante}
                 <label>
-                    <input id="inputs_sante" name="inputs_sante[]" type="checkbox" value="{$input_sante[0]}">
+                    <input id="inputs_sante" name="inputs_sante[]" type="checkbox" value="{$input_sante[0]}"
+                    {if in_array($input_sante[0], $smarty.post.inputs_sante)}checked{/if} >
                     {$input_sante[1]}
+
                 </label><br>
                 {/foreach}
             </div>
