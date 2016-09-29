@@ -21,6 +21,7 @@
 <p>{$mails['{message_motivation}']}</p>
 
 {else}
+{var_dump($input_sante)}
 {if $last_carnet}{addJsDef lastCarnet=$last_carnet}{/if}
     <h2>VOTRE CARNET D'AUTO-SUIVI</h2>
     <h3>A quoi ça sert ?</h3>
@@ -137,22 +138,39 @@
             </p>
         </div>
 
+        <!-- -->
         <div class="form-group">
-            <label class="col-xs-4 {if isset($errors['sante_digestif'])}{$errors['sante_digestif']}{/if}" for="sante_digestif">Durant la semaine
-                écoulée...</label>
+            <div class="col-xs-4 {if isset($errors['sante'])}{$errors['sante']}{/if}">
+                <label for="inputs_sante">Durant la semaine écoulée...</label>
+            </div>
             <div class="col-xs-8">
-                <label><input id="sante_digestif" name="sante_digestif" type="checkbox" value="troubles_digestifs" {if isset($smarty.post.sante_digestif) && $smarty.post.sante_digestif =="troubles_digestifs"}checked{/if}> Vous avez eu des troubles
-                    digestifs</label><br>
-                <label><input name="sante_transit" type="checkbox" value="problemes_de_transit" {if isset($smarty.post.sante_transit) && $smarty.post.sante_transit =="problemes_de_transit"}checked{/if}> Vous avez eu des problèmes de
-                    transit</label><br>
-                <label><input name="sante_stress" type="checkbox" value="stress" {if isset($smarty.post.sante_stress) && $smarty.post.sante_stress =="stress"}checked{/if}> Vous avez été particulièrement
-                    stressé(e)</label><br>
-                <label><input name="sante_fatigue" type="checkbox" value="fatigue" {if isset($smarty.post.sante_fatigue) && $smarty.post.sante_fatigue =="fatigue"}checked{/if}> Vous avez été particulièrement
-                    fatigué(e)</label><br>
-                <label><input name="sante_sommeil" type="checkbox" value="sommeil" {if isset($smarty.post.sante_sommeil) && $smarty.post.sante_sommeil =="sommeil"}checked{/if}> Vous avez eu des problèmes de sommeil</label><br>
-                <label><input name="sante_medical" type="checkbox" value="medical" {if isset($smarty.post.sante_medical) && $smarty.post.sante_medical =="medical"}checked{/if}> Vous avez eu un problème de santé</label><br>
+                {foreach item=input_sante from=$inputs_sante}
+                <label>
+                    <input id="inputs_sante" name="inputs_sante[]" type="checkbox" value="{$input_sante[0]}">
+                    {$input_sante[1]}
+                </label><br>
+                {/foreach}
             </div>
         </div>
+
+        <!-- -->
+
+        <!--<div class="form-group">-->
+            <!--<label class="col-xs-4 {if isset($errors['sante_digestif'])}{$errors['sante_digestif']}{/if}" for="sante_digestif">Durant la semaine-->
+                <!--écoulée...</label>-->
+            <!--<div class="col-xs-8">-->
+                <!--<label><input id="sante_digestif" name="sante_digestif" type="checkbox" value="troubles_digestifs" {if isset($smarty.post.sante_digestif) && $smarty.post.sante_digestif =="troubles_digestifs"}checked{/if}> Vous avez eu des troubles-->
+                    <!--digestifs</label><br>-->
+                <!--<label><input name="sante_transit" type="checkbox" value="problemes_de_transit" {if isset($smarty.post.sante_transit) && $smarty.post.sante_transit =="problemes_de_transit"}checked{/if}> Vous avez eu des problèmes de-->
+                    <!--transit</label><br>-->
+                <!--<label><input name="sante_stress" type="checkbox" value="stress" {if isset($smarty.post.sante_stress) && $smarty.post.sante_stress =="stress"}checked{/if}> Vous avez été particulièrement-->
+                    <!--stressé(e)</label><br>-->
+                <!--<label><input name="sante_fatigue" type="checkbox" value="fatigue" {if isset($smarty.post.sante_fatigue) && $smarty.post.sante_fatigue =="fatigue"}checked{/if}> Vous avez été particulièrement-->
+                    <!--fatigué(e)</label><br>-->
+                <!--<label><input name="sante_sommeil" type="checkbox" value="sommeil" {if isset($smarty.post.sante_sommeil) && $smarty.post.sante_sommeil =="sommeil"}checked{/if}> Vous avez eu des problèmes de sommeil</label><br>-->
+                <!--<label><input name="sante_medical" type="checkbox" value="medical" {if isset($smarty.post.sante_medical) && $smarty.post.sante_medical =="medical"}checked{/if}> Vous avez eu un problème de santé</label><br>-->
+            <!--</div>-->
+        <!--</div>-->
 
         <div class="form-group">
             <label class="col-xs-4 {if isset($errors['sante_autre'])}{$errors['sante_autre']}{/if}" for="sante_autre">Autre</label>

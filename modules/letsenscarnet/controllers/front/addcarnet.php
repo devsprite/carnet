@@ -24,7 +24,8 @@ class letsenscarnetaddcarnetModuleFrontController extends ModuleFrontController
             'date_jour' => date('d-m-Y'),
             'customer_name' => $customer->lastname . ' ' . $customer->firstname,
             'name_contacts' => $this->getContacts(),
-            'last_carnet' => $lastCarnet
+            'last_carnet' => $lastCarnet,
+            'inputs_sante' => $this->module->getInputsSante()
         ));
         $this->setTemplate('addcarnet.tpl');
     }
@@ -39,8 +40,6 @@ class letsenscarnetaddcarnetModuleFrontController extends ModuleFrontController
 
         if (Tools::isSubmit('submitCarnet')) {
             if (Tools::getValue('name_contact')) {
-
-                ddd($_POST);
 
                 $contact = $this->getEmployeeName(Tools::getValue('name_contact'));
 
@@ -79,12 +78,13 @@ class letsenscarnetaddcarnetModuleFrontController extends ModuleFrontController
                 $data['cuisse_differrence'] = (isset($data_pre['cuisse']))
                     ? $this->differrence(Tools::getValue('cuisse'), $data_pre['cuisse'])
                     : '';
-                $data['sante_digestif'] = Tools::getValue('sante_digestif');
-                $data['sante_transit'] = Tools::getValue('sante_transit');
-                $data['sante_stress'] = Tools::getValue('sante_stress');
-                $data['sante_fatigue'] = Tools::getValue('sante_fatigue');
-                $data['sante_sommeil'] = Tools::getValue('sante_sommeil');
-                $data['sante_medical'] = Tools::getValue('sante_medical');
+                $data['inputs_sante'] = implode(',', Tools::getValue('inputs_sante'));
+//                $data['sante_digestif'] = Tools::getValue('sante_digestif');
+//                $data['sante_transit'] = Tools::getValue('sante_transit');
+//                $data['sante_stress'] = Tools::getValue('sante_stress');
+//                $data['sante_fatigue'] = Tools::getValue('sante_fatigue');
+//                $data['sante_sommeil'] = Tools::getValue('sante_sommeil');
+//                $data['sante_medical'] = Tools::getValue('sante_medical');
                 $data['sante_autre'] = Tools::getValue('sante_autre');
                 $data['activite_physique'] = Tools::getValue('activite_physique');
                 $data['activite_physique_heure'] = Tools::getValue('activite_physique_heure');
@@ -104,7 +104,6 @@ class letsenscarnetaddcarnetModuleFrontController extends ModuleFrontController
                 $data['programme_resolution'] = Tools::getValue('programme_resolution');
                 $data['motivation'] = Tools::getValue('motivation');
                 $data['motivation_dernier_bilan'] = Tools::getValue('motivation_dernier_bilan');
-
 
                 if (empty($data['poids']) || !Validate::isFloat($data['poids'])) {
                     $this->errors['poids'] = $this->helperError($this->module->l('Erreur champ poids'));
@@ -131,7 +130,7 @@ class letsenscarnetaddcarnetModuleFrontController extends ModuleFrontController
                 if (!Db::getInstance()->insert($this->module->tableName, $data)) {
                     $this->errors[] = Tools::displayError('Erreur : veuillez recommencer');
                 } else {
-                    $mailCarnet = new MailCarnetClass($data, $data_pre);
+                    $mailCarnet = new MailCarnetClass($data, $data_pre, $this->module->getInputsSante());
                     $this->params = $mailCarnet->createMail();
 
                     Mail::Send($this->context->language->id, 'carnet', 'Votre carnet de suivi',

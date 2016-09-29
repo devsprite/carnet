@@ -6,6 +6,14 @@ class Letsenscarnet extends Module
     protected $tabName;
     protected $html = '';
     protected $config = array();
+    protected $input_sante = array(
+        array('0', 'Vous avez eu des troubles digestifs'),
+        array('1', 'Vous avez eu des problèmes de transit'),
+        array('2', 'Vous avez été particulièrement stressé(e)'),
+        array('3', 'Vous avez été particulièrement fatigué(e)'),
+        array('4', 'Vous avez eu des problèmes de sommeil'),
+        array('5', 'Vous avez eu un problème de santé')
+    );
 
 
     public function __construct()
@@ -200,6 +208,10 @@ class Letsenscarnet extends Module
         $sql = 'SELECT * FROM `' . _DB_PREFIX_ . $this->tableName . '` WHERE id_carnet = ' . pSQL($id_carnet)
             . ' AND id_customer = ' . pSQL($id_customer) . ' ORDER BY date_upd DESC';
         return Db::getInstance()->getRow($sql);
+    }
+
+    public function getInputsSante() {
+        return $this->input_sante;
     }
 }
 

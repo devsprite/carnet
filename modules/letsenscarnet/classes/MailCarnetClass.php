@@ -18,12 +18,16 @@ class MailCarnetClass
 
     public $gender;
 
-    public function __construct($data, $data_pre)
+    public $inputsSante;
+
+    public function __construct($data, $data_pre, $inputsSante)
     {
         $this->data = CarnetClass::getLastCarnet($data['id_customer']);
         $this->data_pre = $data_pre;
         $this->customer = new Customer($data['id_customer']);
         $this->gender = new Gender($this->customer->id_gender);
+
+        $this->inputsSante = $inputsSante;
 
     }
 
@@ -89,13 +93,9 @@ class MailCarnetClass
     private function messageSante()
     {
         $message = '<ul>';
-        $message .= $this->messageSanteDigestif();
-        $message .= $this->messageSanteTransit();
-        $message .= $this->messageSanteStress();
-        $message .= $this->messageSanteFatigue();
-        $message .= $this->messageSanteSommeil();
-        $message .= $this->messageSanteMedical();
+        $message .= $this->messageInputsSante();
         $message .= '</ul>';
+
         return $message;
     }
 
@@ -261,6 +261,19 @@ class MailCarnetClass
         return $message;
     }
 
+    private function messageInputsSante()
+    {
+
+        $message = '';
+        $inputsKey = explode(',', $this->data['inputs_sante']);
+        foreach ($inputsKey as $v) {
+            $message .= '<li>' . $this->inputsSante[$v][1] . '</li>';
+        }
+
+        return $message;
+    }
+
+
     private function messageSanteDigestif()
     {
         $message = '';
@@ -425,12 +438,12 @@ class MailCarnetClass
         if (!empty($this->data['programme_resolution'])) {
             $message .= 'Votre ou vos bonnes résolutions pour la semaine à venir : ' . $this->data['programme_resolution'];
         }
-            return $message;
+        return $message;
     }
 
     private function messageAnalyseProgrammeMotivation()
     {
-        $message ='';
+        $message = '';
         $positif = ((int)$this->data['motivation'] > 7) ? 'très' : '';
         $negatif = ((int)$this->data['motivation'] < 3) ? 'du tout' : '';
 
