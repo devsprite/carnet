@@ -34,6 +34,8 @@ class CarnetClass extends ObjectModel
 
     public $cuisse_differrence;
 
+    public $inputs_sante;
+
     public $sante_digestif;
 
     public $sante_transit;
@@ -108,6 +110,7 @@ class CarnetClass extends ObjectModel
             'cuisse' => array('type' => self::TYPE_INT, 'validate' => 'isInt', 'size' => 500, 'required' => true),
             'cuisse_evolution' => array('type' => self::TYPE_STRING, 'validate' => 'isString', 'size' => 500),
             'cuisse_differrence' => array('type' => self::TYPE_INT, 'validate' => 'isInt', 'size' => 500),
+            'inputs_sante' => array('type' => self::TYPE_STRING, 'validate' => 'isString', 'size' => 500),
             'sante_digestif' => array('type' => self::TYPE_STRING, 'validate' => 'isString', 'size' => 500),
             'sante_transit' => array('type' => self::TYPE_STRING, 'validate' => 'isString', 'size' => 500),
             'sante_stress' => array('type' => self::TYPE_STRING, 'validate' => 'isString', 'size' => 500),

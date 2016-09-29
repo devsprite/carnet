@@ -672,6 +672,7 @@ class AdminLetsenscarnetController extends ModuleAdminController
     public function renderView()
     {
         $this->tpl_view_vars['carnet'] = $this->loadObject();
+        $this->tpl_view_vars['inputs_sante'] = $this->module->getInputsSante();
         return parent::renderView();
     }
 

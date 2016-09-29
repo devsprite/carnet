@@ -91,18 +91,13 @@
     <div class="row panel">
         <h2>SANTÉ</h2>
         <div class="row">
-            <div class="col-xs-4">Durant la semaine écoulée...Vous avez eu des troubles digestifs</div>
-            <div class="col-xs-8">{if isset($carnet->sante_digestif)}{$carnet->sante_digestif}{/if}&nbsp;</div>
-            <div class="col-xs-4">Durant la semaine écoulée...Vous avez eu des problèmes de transit</div>
-            <div class="col-xs-8">{if isset($carnet->sante_transit)}{$carnet->sante_transit}{/if}&nbsp;</div>
-            <div class="col-xs-4">Durant la semaine écoulée...Vous avez été particulièrement stressé(e)</div>
-            <div class="col-xs-8">{if isset($carnet->sante_stress)}{$carnet->sante_stress}{/if}&nbsp;</div>
-            <div class="col-xs-4">Durant la semaine écoulée...Vous avez été particulièrement fatigué(e)</div>
-            <div class="col-xs-8">{if isset($carnet->sante_fatigue)}{$carnet->sante_fatigue}{/if}&nbsp;</div>
-            <div class="col-xs-4">Durant la semaine écoulée...Vous avez eu des problèmes de sommeil</div>
-            <div class="col-xs-8">{if isset($carnet->sante_sommeil)}{$carnet->sante_sommeil}{/if}&nbsp;</div>
-            <div class="col-xs-4">Durant la semaine écoulée...Vous avez eu un problème de santé</div>
-            <div class="col-xs-8">{if isset($carnet->sante_medical)}{$carnet->sante_medical}{/if}&nbsp;</div>
+            {foreach item=input_sante from=$inputs_sante}
+
+            {if substr_count($carnet->inputs_sante, $input_sante[0])}
+                <div class="col-xs-4">Durant la semaine écoulée...</div>
+                <div class="col-xs-8">{$input_sante[1]}</div>
+            {/if}
+            {/foreach}
         </div>
         <div class="row">
             <div class="col-xs-4">Autre</div>
