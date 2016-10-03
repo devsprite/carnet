@@ -46,6 +46,7 @@ class letsenscarnetaddcarnetModuleFrontController extends ModuleFrontController
                 $customer = New Customer($this->context->customer->id);
                 $date_form = Tools::getValue('date_form');
 
+                $data['date_add'] = date('Y-m-d H:i:s');
                 $data['id_customer'] = $customer->id;
                 $data['customer_name'] = $customer->lastname . ' ' . $customer->firstname;
                 $data['name_contact'] = (isset($contact->name[1])) ? $contact->name[1] : '';
