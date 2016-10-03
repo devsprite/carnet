@@ -63,11 +63,6 @@ class Letsenscarnet extends Module
         return true;
     }
 
-    public function hookDisplayLeftColumn()
-    {
-        return 'ok';
-    }
-
     private function createCarnetDeSuiviTable()
     {
         $sql = 'CREATE TABLE `' . _DB_PREFIX_ . $this->tableName . '` (
@@ -76,7 +71,7 @@ class Letsenscarnet extends Module
             `customer_name` VARCHAR (255) NOT NULL,
             `id_contact` INT (12) NULL,
             `name_contact` VARCHAR (255) NOT NULL,
-            `poids` DECIMAL (4,2) NULL,
+            `poids` DECIMAL (5,2) NULL,
             `poids_evolution` VARCHAR (255) NULL,
             `poids_differrence` DECIMAL (4,2) NULL,
             `taille` INT (4) NULL,
@@ -88,6 +83,7 @@ class Letsenscarnet extends Module
             `cuisse` INT (4) NULL,
             `cuisse_evolution` VARCHAR (255) NULL,
             `cuisse_differrence` INT (4) NULL,
+            `inputs_sante` VARCHAR(255) NULL,
             `sante_digestif` VARCHAR (255) NULL,
             `sante_transit` VARCHAR (255) NULL,
             `sante_stress` VARCHAR (255) NULL,
@@ -113,10 +109,11 @@ class Letsenscarnet extends Module
             `programme_resolution` TEXT NULL,
             `motivation` INT (12) NULL,
             `motivation_dernier_bilan` VARCHAR (255) NULL,
-            `date_add` DATETIME DEFAULT CURRENT_TIMESTAMP,
-            `date_upd` DATETIME DEFAULT CURRENT_TIMESTAMP,
+            `date_add` DATETIME NOT NULL,
+            `date_upd` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
             PRIMARY KEY (`id_carnet`)
         ) ENGINE = ' . _MYSQL_ENGINE_;
+
 
         if (!Db::getInstance()->execute($sql)) {
             return false;
