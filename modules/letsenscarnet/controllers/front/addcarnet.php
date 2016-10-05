@@ -137,7 +137,6 @@ class letsenscarnetaddcarnetModuleFrontController extends ModuleFrontController
                 } else {
                     $mailCarnet = new MailCarnetClass($data, $data_pre, $this->module->getInputsSante());
                     $this->params = $mailCarnet->createMail();
-
                     Mail::Send($this->context->language->id, 'carnet', 'Votre carnet de suivi',
                         $this->params,
                         $customer->email,
