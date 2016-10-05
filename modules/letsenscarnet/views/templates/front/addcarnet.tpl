@@ -75,7 +75,7 @@
             <label class="col-xs-4 {if isset($errors['poids'])}{$errors['poids']}{/if}" for="poids">Aujourd'hui, quel
                 est votre poids (en kg) ?</label>
             <div class="col-xs-8">
-                <input type="number" id="poids" name="poids" step="any" placeholder="kg"
+                <input type="number" id="poids" name="poids" step="0.01" placeholder="kg"
                        value="{if isset($smarty.post.poids)}{$smarty.post.poids|escape:'htmlall':'utf-8'}{/if}">
                 <span id="errpoids" class=""></span>
             </div>
@@ -90,9 +90,9 @@
 
         <div class="form-group">
             <label class="col-xs-4 {if isset($errors['taille'])}{$errors['taille']}{/if}" for="taille">Aujourd'hui, quel
-                est votre tour de taille (en cm) ?</label>
+                est votre tour de taille (En centimètres) ?</label>
             <div class="col-xs-8">
-                <input type="number" id="taille" name="taille" placeholder="cm"
+                <input type="number" id="taille" name="taille" placeholder="En centimètres" step="0.1"
                        value="{if isset($smarty.post.taille)}{$smarty.post.taille|escape:'htmlall':'utf-8'}{/if}">
                 <span id="errtaille" class=""></span>
             </div>
@@ -109,7 +109,7 @@
             <label class="col-xs-4 {if isset($errors['hanches'])}{$errors['hanches']}{/if}" for="hanches">Aujourd'hui,
                 quel est votre tour de hanches (en cm) ?</label>
             <div class="col-xs-8">
-                <input type="number" id="hanches" name="hanches" placeholder="cm"
+                <input type="number" id="hanches" name="hanches" placeholder="En centimètres" step="0.1"
                        value="{if isset($smarty.post.hanches)}{$smarty.post.hanches|escape:'htmlall':'utf-8'}{/if}">
                 <span id="errhanches" class="smiley"></span>
             </div>
@@ -126,7 +126,7 @@
             <label class="col-xs-4 {if isset($errors['cuisse'])}{$errors['cuisse']}{/if}" for="cuisse">Aujourd'hui, quel
                 est votre tour de cuisse (en cm) ?</label>
             <div class="col-xs-8">
-                <input type="number" id="cuisse" name="cuisse" placeholder="cm"
+                <input type="number" id="cuisse" name="cuisse" placeholder="En centimètres" step="0.1"
                        value="{if isset($smarty.post.cuisse)}{$smarty.post.cuisse|escape:'htmlall':'utf-8'}{/if}">
                 <span id="errcuisse" class=""></span>
             </div>
