@@ -92,80 +92,81 @@ class MailCarnetClass
 
     private function messageSante()
     {
-        $message = '<ul>';
-        $message .= $this->messageInputsSante();
-        $message .= '</ul>';
+        $message = '';
+        if (!empty($this->data['inputs_sante'])) {
+            $message .= '<ul>';
+            $message .= $this->messageInputsSante();
+            $message .= '</ul>';
+        }
 
         return $message;
     }
 
     private function messageActivitePhysique()
     {
-        $message = '';
-        $message .= $this->messageAnalyseActivitePhysique();
+        $message = (!empty($this->data['activite_physique'])) ? $this->messageAnalyseActivitePhysique() : '';
+
         return $message;
     }
 
     private function messageAlimentationSuivi()
     {
-        $message = '';
-        $message .= $this->messageAnalyseSuiviAlimentation();
+        $message = (!empty($this->data['alimentation_suivi'])) ? $this->messageAnalyseSuiviAlimentation() : '';
+
         return $message;
     }
 
     private function messageAlimentationComplement()
     {
-        $message = '';
-        $message .= $this->messageAnalyseComplement();
+        $message = (!empty($this->data['alimentation_complements_alimentaires'])) ? $this->messageAnalyseComplement() : '';
+
         return $message;
     }
 
     private function messageAlimentationEau()
     {
-        $message = '';
-        $message .= $this->messageAnalyseEauParJour();
+        $message = (!empty($this->data['alimentation_eau_par_jour'])) ? $this->messageAnalyseEauParJour() : '';
         return $message;
     }
 
     private function messageAlimentationMangeEntreRepas()
     {
-        $message = '';
-        $message .= $this->messageAnalyseMangeEntreRepas();
+        $message = (!empty($this->data['alimentation_mange_entre_repas'])) ? $this->messageAnalyseMangeEntreRepas() : '';
+
         return $message;
     }
 
     private function messageAlimentationRepasParticulier()
     {
-        $message = '';
-        $message .= $this->messageAnalyseRepasparticulier();
+        $message = (!empty($this->data['alimentation_repas_particulier'])) ? $this->messageAnalyseRepasparticulier() : '';
+
         return $message;
     }
 
     private function messageAlimentationPlaisir()
     {
-        $message = '';
-        $message .= $this->messageAnalysePlaisir();
+        $message = (!empty($this->data['alimentation_plaisir'])) ? $this->messageAnalysePlaisir() : '';
+
         return $message;
     }
 
     private function messageProgrammeSatisfaction()
     {
-        $message = '';
-        $message .= $this->messageAnalyseProgrammeSatisfaction();
+        $message = (!empty($this->data['programme_satisfaction_resultat'])) ? $this->messageAnalyseProgrammeSatisfaction() : '';
+
         return $message;
     }
 
     private function messageProgrammeResolution()
     {
-        $message = '';
-        $message .= $this->messageAnalyseProgrammeResolution();
+        $message = (!empty($this->data['programme_resolution'])) ? $this->messageAnalyseProgrammeResolution() : '';
+
         return $message;
     }
 
     private function messageProgrammeMotivation()
     {
-        $message = '';
-        $message .= $this->messageAnalyseProgrammeMotivation();
+        $message = (!empty($this->data['motivation'])) ? $this->messageAnalyseProgrammeMotivation() : '';
         return $message;
     }
 
