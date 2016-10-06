@@ -39,17 +39,16 @@
             <p>La taille de votre cuisse a évoluée de : {$carnet['taille_differrence']} cm</p>
         {/if}
     </div>
-    {if $carnet['sante_digestif'] || $carnet['sante_transit'] || $carnet['sante_stress'] || $carnet['sante_fatigue']}
-        <div class="box">
-            <h4><strong>Durant la semaine écoulée...</strong></h4>
-            {if $carnet['sante_digestif']}<p>Vous avez eu des problèmes digestifs</p>{/if}
-            {if $carnet['sante_transit']}<p>Vous avez eu des problèmes de transit</p>{/if}
-            {if $carnet['sante_stress']}<p>Vous avez été particulièrement stressé(e)</p>{/if}
-            {if $carnet['sante_fatigue']}<p>Vous avez été particulièrement fatigué(e)</p>{/if}
-            {if $carnet['sante_sommeil']}<p>Vous avez eu des problèmes de sommeil</p>{/if}
-            {if $carnet['sante_medical']}<p>Vous avez eu un problème de santé</p>{/if}
-            {if $carnet['sante_autre']}<p>Autre : {$carnet['sante_autre']}</p>{/if}
-        </div>
+    {if !empty($inputs_sante) || !empty($carnet['sante_autre'])}
+    <div class="box">
+        <h4><strong>Durant la semaine écoulée...</strong></h4>
+        {if !empty($inputs_sante)}
+            {foreach item=input from=$inputs_sante}
+                <p>{$input}</p>
+            {/foreach}
+        {/if}
+        {if $carnet['sante_autre']}<p>Autre : {$carnet['sante_autre']}</p>{/if}
+    </div>
     {/if}
     {if !empty($carnet['activite_physique'])}
         <div class="box">

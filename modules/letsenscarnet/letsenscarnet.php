@@ -6,7 +6,7 @@ class Letsenscarnet extends Module
     protected $tabName;
     protected $html = '';
     protected $config = array();
-    protected $input_sante = array(
+    protected $inputs_sante = array(
         array('0', 'Vous avez eu des troubles digestifs'),
         array('1', 'Vous avez eu des problèmes de transit'),
         array('2', 'Vous avez été particulièrement stressé(e)'),
@@ -207,8 +207,28 @@ class Letsenscarnet extends Module
         return Db::getInstance()->getRow($sql);
     }
 
-    public function getInputsSante() {
-        return $this->input_sante;
+    public function getInputsSante($id = null) {
+        if ($id) {
+            return $this->inputs_sante[$id];
+        }
+        return $this->inputs_sante;
+    }
+
+    public function formatInputsSante($param)
+    {
+        if (!$param){
+            return false;
+        }
+
+        $inputs = array();
+        $array_inputs = explode(',', $param);
+
+        foreach ($array_inputs as $input) {
+            $inputs[] = $this->inputs_sante[$input][1];
+        }
+        $inputs_sante = implode('<br>', $inputs);
+
+        return $inputs_sante;
     }
 }
 

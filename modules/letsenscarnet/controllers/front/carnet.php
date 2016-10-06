@@ -18,6 +18,7 @@ class letsenscarnetcarnetModuleFrontController extends ModuleFrontController
 
         $this->context->smarty->assign(array(
             'carnet' => $carnet,
+            'inputs_sante' => $this->module->formatInputsSante($carnet['inputs_sante'])
         ));
         $this->setTemplate('carnet.tpl');
     }

@@ -4,6 +4,7 @@ require_once(dirname(__FILE__) . '/../../classes/CarnetClass.php');
 
 class AdminLetsenscarnetController extends ModuleAdminController
 {
+    public $inputs_sante = array();
     public function __construct()
     {
         $this->table = 'carnet';
@@ -15,6 +16,7 @@ class AdminLetsenscarnetController extends ModuleAdminController
         $this->context = Context::getContext();
         $this->_orderBy = 'id_carnet';
         $this->_orderWay = 'DESC';
+        $this->original_filter = '';
 
         $this->fields_list = array(
             'id_carnet' => array(
@@ -45,11 +47,6 @@ class AdminLetsenscarnetController extends ModuleAdminController
                 'align' => 'center',
                 'class' => 'col-xs-1',
             ),
-//            'poids_evolution' => array(
-//                'title' => $this->l('P. Evol.'),
-//                'align' => 'center',
-//                'class' => 'col-xs-1'
-//            ),
             'poids_differrence' => array(
                 'title' => $this->l('P. Diff.'),
                 'align' => 'center',
@@ -60,11 +57,6 @@ class AdminLetsenscarnetController extends ModuleAdminController
                 'align' => 'center',
                 'class' => 'col-xs-1'
             ),
-//            'taille_evolution' => array(
-//                'title' => $this->l('T. Evol.'),
-//                'align' => 'center',
-//                'class' => 'col-xs-1'
-//            ),
             'taille_differrence' => array(
                 'title' => $this->l('T. Diff.'),
                 'align' => 'center',
@@ -75,48 +67,24 @@ class AdminLetsenscarnetController extends ModuleAdminController
                 'align' => 'center',
                 'class' => 'col-xs-1'
             ),
-//            'hanches_evolution' => array(
-//                'title' => $this->l('H. Evol.'),
-//                'align' => 'center',
-//                'class' => 'col-xs-1'
-//            ),
             'hanches_differrence' => array(
                 'title' => $this->l('H. Diff.'),
                 'align' => 'center',
                 'class' => 'col-xs-1'
+            ),
+            'inputs_sante' => array(
+                'title' => $this->l('P. sante'),
+                'align' => 'center',
+                'class' => 'col-xs-3',
+                'callback' => 'formatInputsSante'
             ),
             'cuisse' => array(
                 'title' => $this->l('Cuisse'),
                 'align' => 'center',
                 'class' => 'col-xs-1'
             ),
-//            'cuisse_evolution' => array(
-//                'title' => $this->l('C. Evol.'),
-//                'align' => 'center',
-//                'class' => 'col-xs-1'
-//            ),
             'cuisse_differrence' => array(
                 'title' => $this->l('C. Diff.'),
-                'align' => 'center',
-                'class' => 'col-xs-1'
-            ),
-            'sante_digestif' => array(
-                'title' => $this->l('P. Digestif'),
-                'align' => 'center',
-                'class' => 'col-xs-1'
-            ),
-            'sante_transit' => array(
-                'title' => $this->l('P. Sante'),
-                'align' => 'center',
-                'class' => 'col-xs-1'
-            ),
-            'sante_stress' => array(
-                'title' => $this->l('P. Stress'),
-                'align' => 'center',
-                'class' => 'col-xs-1'
-            ),
-            'sante_fatigue' => array(
-                'title' => $this->l('P. Fatigue'),
                 'align' => 'center',
                 'class' => 'col-xs-1'
             ),
@@ -131,6 +99,8 @@ class AdminLetsenscarnetController extends ModuleAdminController
         );
 
         parent::__construct();
+
+        $this->inputs_sante = $this->module->getInputsSante();
     }
 
     public function renderList()
@@ -691,6 +661,23 @@ class AdminLetsenscarnetController extends ModuleAdminController
     public function formatDate($param)
     {
         return date('d-m-Y H:i:s', strtotime($param));
+    }
+
+    public function formatInputsSante($param)
+    {
+        if (!$param){
+            return false;
+        }
+
+        $inputs = array();
+        $array_inputs = explode(',', $param);
+
+        foreach ($array_inputs as $input) {
+            $inputs[] = $this->inputs_sante[$input][1];
+        }
+        $inputs_sante = implode('<br>', $inputs);
+
+        return $inputs_sante;
     }
 
     public function postProcess()
