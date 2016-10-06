@@ -22,7 +22,7 @@
 
 {else}
 {if $last_carnet}{addJsDef lastCarnet=$last_carnet}{/if}
-{include file="$tpl_dir./errors.tpl"}
+{*{include file="$tpl_dir./errors.tpl"}*}
     <h2>VOTRE CARNET D'AUTO-SUIVI</h2>
     <h3>A quoi ça sert ?</h3>
     <p>A compléter chaque semaine, ce formulaire vous permet de faire vous-même un bilan régulier de vos résultats et de
@@ -148,7 +148,9 @@
                 {foreach item=input_sante from=$inputs_sante}
                 <label>
                     <input id="inputs_sante" name="inputs_sante[]" type="checkbox" value="{$input_sante[0]}"
-                    {if in_array($input_sante[0], $smarty.post.inputs_sante)}checked{/if} >
+                    {if isset($smarty.post.inputs_sante)}
+                            {if in_array($input_sante[0], $smarty.post.inputs_sante)}checked{/if}
+                    {/if}>
                     {$input_sante[1]}
 
                 </label><br>

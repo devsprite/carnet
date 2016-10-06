@@ -182,21 +182,21 @@ class Letsenscarnet extends Module
     public function getLastCarnet($id_customer)
     {
         $sql = 'SELECT * FROM `' . _DB_PREFIX_ . $this->tableName . '` WHERE id_customer = ' . pSQL($id_customer)
-            . ' ORDER BY date_upd DESC';
+            . ' ORDER BY date_add DESC';
         return Db::getInstance()->getRow($sql);
     }
 
     public function getAllCarnets($id_customer)
     {
         $sql = 'SELECT * FROM `' . _DB_PREFIX_ . $this->tableName . '` WHERE id_customer = ' . pSQL($id_customer)
-            . ' ORDER BY date_upd DESC';
+            . ' ORDER BY date_add DESC';
         return Db::getInstance()->executeS($sql);
     }
 
     public function getAllCarnetsASC($id_customer)
     {
         $sql = 'SELECT * FROM `' . _DB_PREFIX_ . $this->tableName . '` WHERE id_customer = ' . pSQL($id_customer)
-            . ' ORDER BY date_upd ASC';
+            . ' ORDER BY date_add ASC';
         return Db::getInstance()->executeS($sql);
     }
 
@@ -207,10 +207,7 @@ class Letsenscarnet extends Module
         return Db::getInstance()->getRow($sql);
     }
 
-    public function getInputsSante($id = null) {
-        if ($id) {
-            return $this->inputs_sante[$id];
-        }
+    public function getInputsSante() {
         return $this->inputs_sante;
     }
 

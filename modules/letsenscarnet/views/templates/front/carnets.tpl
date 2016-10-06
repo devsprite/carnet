@@ -86,7 +86,7 @@
     <div class="col-xs-6 col-md-4">
         <a href="{$link->getModuleLink('letsenscarnet', 'carnet')}?id_carnet={$carnet.id_carnet}">
             <div class="box">
-                <p class="">Carnet rempli le {$carnet.date_upd|date_format:"%D"}</p>
+                <p class="">Carnet rempli le {$carnet.date_add|date_format:"%A %x"}</p>
                 <p class="">Poids : {$carnet.poids} kg</p>
                 <p class="">Taille : {$carnet.taille} cm</p>
                 <p class="">Hanches : {$carnet.hanches} cm</p>

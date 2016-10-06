@@ -36,7 +36,7 @@ class letsenscarnetcarnetsModuleFrontController extends ModuleFrontController
         if (sizeof($allCarnets > 1)) {
             $data_poids .= '[' . PHP_EOL;
             foreach ($allCarnets as $carnet) {
-                $data_poids .= '[gd(' . date('Y, n, j', strtotime($carnet['date_upd'])) . '), ' . (int)$carnet['poids'] . '],' . PHP_EOL;
+                $data_poids .= '[gd(' . date('Y, n, j', strtotime($carnet['date_add'])) . '), ' . (int)$carnet['poids'] . '],' . PHP_EOL;
             }
             $data_poids .= ']';
         }

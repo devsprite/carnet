@@ -109,15 +109,15 @@ class letsenscarnetaddcarnetModuleFrontController extends ModuleFrontController
                     $this->errors['poids'] = $this->helperError($this->module->l('Erreur champ poids'));
                 }
 
-                if (empty($data['taille']) || !Validate::isInt($data['taille'])) {
+                if (empty($data['taille']) || !Validate::isFloat($data['taille'])) {
                     $this->errors['taille'] = $this->helperError($this->module->l('Erreur champ taille'));
                 }
 
-                if (empty($data['hanches']) || !Validate::isInt($data['hanches'])) {
+                if (empty($data['hanches']) || !Validate::isFloat($data['hanches'])) {
                     $this->errors['hanches'] = $this->helperError($this->module->l('Erreur champ hanches'));
                 }
 
-                if (empty($data['cuisse']) || !Validate::isInt($data['cuisse'])) {
+                if (empty($data['cuisse']) || !Validate::isFloat($data['cuisse'])) {
                     $this->errors['cuisse'] = $this->helperError($this->module->l('Erreur champ cuisse'));
                 }
 
@@ -126,9 +126,9 @@ class letsenscarnetaddcarnetModuleFrontController extends ModuleFrontController
                 $this->errors['contact'] = $this->helperError($this->module->l('Erreur'));
             }
 
-            if ($data_pre['date_add'] >= $date_form) {
-                $this->errors[] = Tools::displayError('Vous avez déjà enregistré un carnet de suivi aujourd\'hui.');
-            }
+//            if ($data_pre['date_add'] >= $date_form) {
+//                $this->errors[] = Tools::displayError('Vous avez déjà enregistré un carnet de suivi aujourd\'hui.');
+//            }
 
             if (!$this->errors) {
 
