@@ -45,6 +45,7 @@ class Letsenscarnet extends Module
             !$this->registerHook('displayBackOfficeHeader') or
             !$this->registerHook('displayAdminCustomers') or
             !$this->registerHook('displayCustomerAccount') or
+            !$this->registerHook('displayMyAccountBlock') or
             !$this->createTabs()
         ) {
             return false;
@@ -161,6 +162,11 @@ class Letsenscarnet extends Module
     {
         $this->context->controller->addCSS($this->_path . 'views/css/letsenscarnet.css', 'all');
 
+    }
+
+    public function hookDisplayMyAccountBlock()
+    {
+        return $this->display(__FILE__, 'linksBlockMyAccount.tpl');
     }
 
     public function hookDisplayCustomerAccount()
