@@ -18,7 +18,7 @@ class Letsenscarnet extends Module
 
     public function __construct()
     {
-        if (!_PS_VERSION_) {
+        if (!defined('_PS_VERSION_')) {
             exit();
         }
         $this->name = 'letsenscarnet';

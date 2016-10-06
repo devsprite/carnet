@@ -22,11 +22,12 @@ class AdminLetsenscarnetController extends ModuleAdminController
                 'align' => 'center',
                 'class' => 'fixed-width-xs'
             ),
-            'date_upd' => array(
+            'date_add' => array(
                 'title' => $this->l('Date'),
                 'align' => 'center',
                 'class' => 'col-xs-1',
-                'search' => 'true'
+                'search' => 'true',
+                'callback' => 'formatDate'
             ),
             'name_contact' => array(
                 'title' => $this->l('Coach'),
@@ -685,6 +686,11 @@ class AdminLetsenscarnetController extends ModuleAdminController
             $contacts[] = array('id_contact' => $name['name'], 'name' => $name['name']);
         }
         return $contacts;
+    }
+
+    public function formatDate($param)
+    {
+        return date('d-m-Y H:i:s', strtotime($param));
     }
 
     public function postProcess()
