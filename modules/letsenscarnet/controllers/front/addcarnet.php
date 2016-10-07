@@ -78,7 +78,6 @@ class letsenscarnetaddcarnetModuleFrontController extends ModuleFrontController
         $data = array();
         $data_pre = array();
         $message = '';
-
         if (Tools::getValue('name_contact')) {
 
             $contact = $this->getEmployeeName(Tools::getValue('name_contact'));

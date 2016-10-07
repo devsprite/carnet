@@ -178,11 +178,9 @@ class Letsenscarnet extends Module
     public function hookDisplayAdminCustomers()
     {
         $id_customer = $this->context->customer->id;
-        $name_customer = strtoupper($this->context->customer->lastname) . ' ' . $this->context->customer->firstname;
-        $link = $this->context->link->getAdminLink('AdminLetsenscarnet') . '&id_customer=' . $id_customer
-            . '&customer_name=' . $name_customer . '&addcarnet';
+        $carnets = $this->getAllCarnets($id_customer);
 
-        $this->smarty->assign(array('link' => $link));
+        $this->smarty->assign(array('carnets' => $carnets));
         return $this->display(__FILE__, 'addcarnet.tpl');
     }
 
