@@ -12,8 +12,7 @@
 * Ajout des liens mes carnets et add carnet dans le block MyAccount
 * Modification et suppression d'un carnet existant depuis l'interface client
 * ajouter la saisi de la taille en hauteur des clients dans le formulaire
+* Liens des carnets dans la fiche client
 
 ## Reste à faire
-
 * Import fichier csv
-* Liens des carnets dans la fiche client
