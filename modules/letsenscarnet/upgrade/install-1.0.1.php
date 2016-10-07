@@ -23,8 +23,7 @@ function addColumn($object)
      MODIFY `hanches` DECIMAL (5,2) NULL,
      MODIFY `hanches_differrence` DECIMAL (5,2) NULL,
      MODIFY `cuisse` DECIMAL (5,2) NULL,
-     MODIFY `cuisse_differrence`  DECIMAL (5,2) NULL
-     
+     MODIFY `cuisse_differrence`  DECIMAL (5,2) NULL,     
      ';
 
     if (!Db::getInstance()->execute($sql)) {

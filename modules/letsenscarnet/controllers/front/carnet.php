@@ -30,8 +30,7 @@ class letsenscarnetcarnetModuleFrontController extends ModuleFrontController
             $id_carnet = (int)Tools::getValue('delete');
 
             if ($this->isCarnetCustomer($id_carnet)) {
-//                Db::getInstance()->delete(_DB_PREFIX_ . 'carnet', 'id_carnet=' . $id_carnet)
-                if (true) {
+                if (Db::getInstance()->delete(_DB_PREFIX_ . 'carnet', 'id_carnet=' . $id_carnet)) {
                     $this->confirmation = $this->module->l('Carnet supprimé.');
                 } else {
                     $this->errors[] = $this->module->l('Erreur lors de la suppression de votre carnet.');

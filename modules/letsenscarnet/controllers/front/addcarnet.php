@@ -35,11 +35,19 @@ class letsenscarnetaddcarnetModuleFrontController extends ModuleFrontController
             if (Tools::getValue('name_contact')) {
                 $this->addCarnet();
             }
-        } elseif (Tools::isSubmit('id_carnet')) {
+        } elseif (Tools::isSubmit('updateCarnet')) {
             $id_carnet = (int)Tools::getValue('id_carnet');
 
             if ($this->isCarnetCustomer($id_carnet)) {
                 $this->updateCarnet($id_carnet);
+            } else {
+                $this->errors[] = $this->module->l('Ce carnet ne vous appartient pas.');
+            }
+        } elseif (Tools::isSubmit('id_carnet')) {
+            $id_carnet = (int)Tools::getValue('id_carnet');
+
+            if ($this->isCarnetCustomer($id_carnet)) {
+                $this->displayCarnet($id_carnet);
             } else {
                 $this->errors[] = $this->module->l('Ce carnet ne vous appartient pas.');
             }
@@ -49,12 +57,22 @@ class letsenscarnetaddcarnetModuleFrontController extends ModuleFrontController
 
     private function updateCarnet($id_carnet)
     {
-        ddd($id_carnet);
-
-        return true;
+        $this->addCarnet($id_carnet);
     }
 
-    private function addCarnet()
+
+    private function displayCarnet($id_carnet)
+    {
+        $carnet = $this->module->getCarnet($id_carnet, (int)$this->context->customer->id);
+
+        $_POST = $carnet;
+        $_POST['inputs_sante'] = explode(',', $_POST['inputs_sante']);
+        $_POST['name_contact'] = $carnet['id_contact'];
+
+//        ddd($_POST);
+    }
+
+    private function addCarnet($id_carnet = null)
     {
         $customer = new Customer();
         $data = array();
@@ -69,7 +87,12 @@ class letsenscarnetaddcarnetModuleFrontController extends ModuleFrontController
             $customer = New Customer($this->context->customer->id);
             $date_form = Tools::getValue('date_form');
 
-            $data['date_add'] = date('Y-m-d H:i:s');
+            if ($id_carnet) {
+                $data['date_add'] = Tools::getValue('date_form');
+            } else {
+                $data['date_add'] = date('Y-m-d H:i:s');
+            }
+
             $data['id_customer'] = $customer->id;
             $data['customer_name'] = $customer->lastname . ' ' . $customer->firstname;
             $data['name_contact'] = (isset($contact->name[1])) ? $contact->name[1] : '';
@@ -155,9 +178,16 @@ class letsenscarnetaddcarnetModuleFrontController extends ModuleFrontController
 
         if (!$this->errors) {
 
-            if (!Db::getInstance()->insert($this->module->tableName, $data)) {
-                $this->errors[] = Tools::displayError('Erreur : veuillez recommencer');
+            if ($id_carnet) {
+                if (!Db::getInstance()->update($this->module->tableName, $data, 'id_carnet =' . $id_carnet)) {
+                    $this->errors[] = Tools::displayError('Erreur lors de la mise à jour du carnet.');
+                }
             } else {
+                if (!Db::getInstance()->insert($this->module->tableName, $data)) {
+                    $this->errors[] = Tools::displayError('Erreur : veuillez recommencer');
+                }
+            }
+            if (!$this->errors) {
                 $mailCarnet = new MailCarnetClass($data, $data_pre, $this->module->getInputsSante());
                 $this->params = $mailCarnet->createMail();
                 Mail::Send($this->context->language->id, 'carnet', 'Votre carnet de suivi',

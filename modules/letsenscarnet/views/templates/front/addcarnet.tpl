@@ -61,8 +61,11 @@
 
         <div class="form-group">
             <p class="col-xs-4">Date du bilan :</p>
-            <div class="col-xs-8"> {$smarty.now|date_format:'%d-%m-%Y'}
-                <input type="hidden" name="date_form" value="{$smarty.now|date_format:'%Y-%m-%d'}">
+            <div class="col-xs-8"> {if isset($smarty.post.date_add)}{$smarty.post.date_add|date_format:'%d-%m-%Y'}
+                {else}{$smarty.now|date_format:'%d-%m-%Y'}{/if}
+                <input type="hidden" name="date_form" value="{if isset($smarty.post.date_add)}
+                    {$smarty.post.date_add}
+                {else}{$smarty.now}{/if}">
             </div>
         </div>
         <!-- Mensuration - Poids -->
@@ -399,9 +402,6 @@
                 <p>Evaluez votre satisfaction en donnant une note entre 0 (pas satisfait(e) du tout) et 10 (pleinement
                     satisfait(e))
                     Satisfaction : de 10 à 7 = - de 6 à 4 = - de 3 à 0 = </p>
-                <label class="smileMoins radio-inline" for="programme_satisfaction_resultat_0">
-                    <input type="radio" id="programme_satisfaction_resultat_0" name="programme_satisfaction_resultat"
-                           value="0"  {if isset($smarty.post.programme_satisfaction_resultat) && $smarty.post.programme_satisfaction_resultat =="0"}checked{/if}>&nbsp;0</label>
                 <label class="smileMoins radio-inline" for="programme_satisfaction_resultat_1">
                     <input type="radio" id="programme_satisfaction_resultat_1" name="programme_satisfaction_resultat"
                            value="1" {if isset($smarty.post.programme_satisfaction_resultat) && $smarty.post.programme_satisfaction_resultat =="1"}checked{/if}>&nbsp;1</label>
@@ -488,9 +488,6 @@
             <div class="col-xs-8">
                 <p>Donnez une note entre 0 (pas motivé(e) du tout) et 10 (motivé(e) à 100%)
                     Motivation : de 10 à 7 = - de 6 à 4 = - de 3 à 0 = </p>
-                <label class="smileMoins radio-inline" for="motivation_0">
-                    <input type="radio" id="motivation_0" name="motivation"
-                           value="0"   {if isset($smarty.post.motivation) && $smarty.post.motivation =="0"}checked{/if}>&nbsp;0</label>
                 <label class="smileMoins radio-inline" for="motivation_1">
                     <input type="radio" id="motivation_1" name="motivation"
                            value="1" {if isset($smarty.post.motivation) && $smarty.post.motivation =="1"}checked{/if}>&nbsp;1</label>
@@ -533,23 +530,28 @@
                                name="motivation_dernier_bilan"
                                value="progression"  {if isset($smarty.post.motivation_dernier_bilan) && $smarty.post.motivation_dernier_bilan =="progression"}checked{/if}><label
                                 class="smileMoins" for="motivation_dernier_bilan_1"> en progression</label></li>
-                    <li><input type="radio" id="motivation_dernier_bilan_2"
-                               name="motivation_dernier_bilan"
-                               value="regression" {if isset($smarty.post.motivation_dernier_bilan) && $smarty.post.motivation_dernier_bilan =="regression"}checked{/if}><label
-                                class="smileEgal" for="motivation_dernier_bilan_2"> en régression</label></li>
                     <li><input type="radio" id="motivation_dernier_bilan_3"
                                name="motivation_dernier_bilan"
                                value="egale" {if isset($smarty.post.motivation_dernier_bilan) && $smarty.post.motivation_dernier_bilan =="egale"}checked{/if}><label
                                 class="smileEgal" for="motivation_dernier_bilan_3"> égale</label></li>
+                    <li><input type="radio" id="motivation_dernier_bilan_2"
+                               name="motivation_dernier_bilan"
+                               value="regression" {if isset($smarty.post.motivation_dernier_bilan) && $smarty.post.motivation_dernier_bilan =="regression"}checked{/if}><label
+                                class="smileEgal" for="motivation_dernier_bilan_2"> en régression</label></li>
                 </ul>
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-xs-5 col-sm-offset-4">
-                <button type="submit" id="submitCarnet" name="submitCarnet"
+                {if isset($smarty.post.id_carnet)}
+                    <input type="hidden" name="id_carnet" value="{$smarty.post.id_carnet}">
+                {/if}
+                <button type="submit" id="submitCarnet"
+                        name="{if isset($smarty.post.id_carnet)}updateCarnet{else}submitCarnet{/if}"
                         class="btn btn-default button button-medium submitCarnet">
-                    <span>Enregistrer<i class="icon-chevron-right right"></i></span>
+                    <span>{if isset($smarty.post.id_carnet)}Modifier carnet{else}Enregistrer{/if}
+                        <i class="icon-chevron-right right"></i></span>
                 </button>
             </div>
         </div>

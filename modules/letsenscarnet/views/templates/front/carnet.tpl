@@ -12,7 +12,7 @@
             </h1>
             <form action="" method="post">
                 <button class="btn btn-warning pull-right" value="{$carnet['id_carnet']}" name="delete"
-                onclick="if(confirm('Etes-vous sur ?')) {} else return false">Supprimer
+                onclick="if(confirm('Etes-vous sur de vouloir supprimer ce carnet ?')) {} else return false">Supprimer
                 </button>
                 <button type="submit" class="btn btn-primary pull-right" name="update"
                         value="{$carnet['id_carnet']}"> Modifier
@@ -161,7 +161,7 @@
                 Note : {$carnet['motivation']}
             {/if}
             {if $carnet['motivation_dernier_bilan']}
-                <h4><strong>Par rapport à votre dernier bilan, cette motivation est-elle :</strong></h4>
+                <h4><strong>Par rapport à votre dernier bilan, cette motivation est :</strong></h4>
                 {if $carnet['motivation_dernier_bilan'] == 'progression'}En progression{/if}
                 {if $carnet['motivation_dernier_bilan'] == 'regression'}En régression{/if}
                 {if $carnet['motivation_dernier_bilan'] == 'egale'}Egale{/if}
