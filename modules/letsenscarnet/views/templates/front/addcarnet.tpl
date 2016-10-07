@@ -22,7 +22,7 @@
 
 {else}
 {if $last_carnet}{addJsDef lastCarnet=$last_carnet}{/if}
-{*{include file="$tpl_dir./errors.tpl"}*}
+{include file="$tpl_dir./errors.tpl"}
     <h2>VOTRE CARNET D'AUTO-SUIVI</h2>
     <h3>A quoi ça sert ?</h3>
     <p>A compléter chaque semaine, ce formulaire vous permet de faire vous-même un bilan régulier de vos résultats et de

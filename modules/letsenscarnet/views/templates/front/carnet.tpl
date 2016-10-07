@@ -1,11 +1,19 @@
 {capture name=path}{l s='Mon carnet' mod='letsenscarnet'}{/capture}
-{if isset($carnet) && $carnet}
+
+{if $confirmation}
+    <p class="alert alert-success">{$confirmation}</p>
+{elseif isset($carnet) && $carnet}
 
 <div class="row box">
-    <h1 class="page-heading bottom-indent">
+    <div class="row box">
+    <h1 class="page-heading bottom-indent pull-left">
         Carnet rempli le {$carnet['date_upd']|date_format:"%D"}
     </h1>
-
+        <form action="" method="post">
+            <button type="submit" class="btn btn-warning pull-right" name="delete" value="{$carnet['id_carnet']}">Supprimer</button>
+            <button type="submit" class="btn btn-primary pull-right" name="update" value="{$carnet['id_carnet']}"> Modifier</button>
+        </form>
+    </div>
 
     <div class="box">
         <h4><strong>Poids</strong></h4>
