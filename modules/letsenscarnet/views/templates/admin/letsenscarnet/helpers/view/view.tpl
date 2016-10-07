@@ -7,8 +7,9 @@
     </div>
     <div class="row panel">
         <div class="col-xs-4">Date du bilan :</div>
-        <div class="col-xs-8">{if isset($carnet->date_add)}{$carnet->date_add}{/if}&nbsp;
-        {if isset($carnet->date_upd) && $carnet->date_upd != $carnet->date_add} -- Modifié le {$carnet->date_upd}{/if}
+        <div class="col-xs-8">{if isset($carnet->date_add)}Le {$carnet->date_add|date_format:'%A %x à %H:%M'}{/if}&nbsp;
+        {if isset($carnet->date_upd) && $carnet->date_upd != $carnet->date_add}<br>Modifié le {$carnet->date_upd|date_format:'%A %x à %H:%M'}{/if}
+        {if isset($carnet->hauteur_customer)}<br>Taille : {$carnet->hauteur_customer} mètre.{/if}
         </div>
     </div>
 

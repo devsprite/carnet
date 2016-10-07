@@ -181,6 +181,15 @@ class AdminLetsenscarnetController extends ModuleAdminController
             )
         );
 
+        // Taille - hauteur
+        $inputs[] = array(
+            'type' => 'text',
+            'label' => $this->l('Votre taille ?'),
+            'name' => 'hauteur_customer',
+            'suffix' => 'mètre',
+            'class' => 'col-xs-3'
+        );
+
         // Poids
         $inputs[] = array(
             'type' => 'text',
@@ -300,81 +309,11 @@ class AdminLetsenscarnetController extends ModuleAdminController
             'class' => 'col-xs-3',
         );
 
-        // santé
-
-        $inputs[] =
-            array(
-                'type' => 'select',
-                'label' => $this->l('Durant la semaine écoulée... Vous avez eu des troubles digestifs'),
-                'name' => 'sante_digestif',
-                'options' => array(
-                    'query' => array(
-                        array('id_option' => '', 'name' => 'Non'),
-                        array('id_option' => 'troubles_digestifs', 'name' => 'Oui'),
-                    ),
-                    'id' => 'id_option',
-                    'name' => 'name'
-                ));
-
-        $inputs[] =
-            array(
-                'type' => 'select',
-                'label' => $this->l('Durant la semaine écoulée... Vous avez eu des problèmes de transit'),
-                'name' => 'sante_transit',
-                'options' => array(
-                    'query' => array(array('id_option' => '', 'name' => 'Non'), array('id_option' => 'problemes_de_transit', 'name' => 'Oui')),
-                    'id' => 'id_option',
-                    'name' => 'name'
-                ));
-
-        $inputs[] =
-            array(
-                'type' => 'select',
-                'label' => $this->l('Durant la semaine écoulée... Vous avez été particulièrement stressé(e)'),
-                'name' => 'sante_stress',
-                'options' => array(
-                    'query' => array(array('id_option' => '', 'name' => 'Non'), array('id_option' => 'stress', 'name' => 'Oui')),
-                    'id' => 'id_option',
-                    'name' => 'name'
-                ));
-
-        $inputs[] =
-            array(
-                'type' => 'select',
-                'label' => $this->l('Durant la semaine écoulée... Vous avez été particulièrement fatigué(e)'),
-                'name' => 'sante_fatigue',
-                'options' => array(
-                    'query' => array(array('id_option' => '', 'name' => 'Non'), array('id_option' => 'fatigue', 'name' => 'Oui')),
-                    'id' => 'id_option',
-                    'name' => 'name'
-                ));
-
-        $inputs[] =
-            array(
-                'type' => 'select',
-                'label' => $this->l('Durant la semaine écoulée... Vous avez eu des problèmes de sommeil'),
-                'name' => 'sante_sommeil',
-                'options' => array(
-                    'query' => array(array('id_option' => '', 'name' => 'Non'), array('id_option' => 'sommeil', 'name' => 'Oui')),
-                    'id' => 'id_option',
-                    'name' => 'name'
-                ));
-
-        $inputs[] =
-            array(
-                'type' => 'select',
-                'label' => $this->l('Durant la semaine écoulée... Vous avez eu un problème de santé et/ou suivi un traitement médical'),
-                'name' => 'sante_medical',
-                'options' => array(
-                    'query' => array(array('id_option' => '', 'name' => 'Non'), array('id_option' => 'medical', 'name' => 'Oui')),
-                    'id' => 'id_option',
-                    'name' => 'name'
-                ));
-
+        // Santé
 
         $inputs[] = array(
             'type' => 'textarea',
-            'label' => $this->l('Autre'),
+            'label' => $this->l('Santé Autre'),
             'name' => 'sante_autre',
             'suffix' => '....',
             'class' => 'col-xs-3'

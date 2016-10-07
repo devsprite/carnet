@@ -36,18 +36,6 @@ class CarnetClass extends ObjectModel
 
     public $inputs_sante;
 
-    public $sante_digestif;
-
-    public $sante_transit;
-
-    public $sante_stress;
-
-    public $sante_fatigue;
-
-    public $sante_sommeil;
-
-    public $sante_medical;
-
     public $sante_autre;
 
     public $activite_physique;
@@ -86,6 +74,8 @@ class CarnetClass extends ObjectModel
 
     public $motivation_dernier_bilan;
 
+    public $hauteur_customer;
+
     public $date_add;
 
     public $date_upd;
@@ -101,22 +91,16 @@ class CarnetClass extends ObjectModel
             'poids' => array('type' => self::TYPE_FLOAT, 'validate' => 'isUnsignedFloat', 'required' => true),
             'poids_evolution' => array('type' => self::TYPE_STRING, 'validate' => 'isString', 'size' => 500),
             'poids_differrence' => array('type' => self::TYPE_FLOAT, 'validate' => 'isUnsignedFloat'),
-            'taille' => array('type' => self::TYPE_INT, 'validate' => 'isInt', 'required' => true),
+            'taille' => array('type' => self::TYPE_FLOAT, 'validate' => 'isUnsignedFloat', 'required' => true),
             'taille_evolution' => array('type' => self::TYPE_STRING, 'validate' => 'isString', 'size' => 500),
-            'taille_differrence' => array('type' => self::TYPE_INT, 'validate' => 'isInt', 'size' => 500),
-            'hanches' => array('type' => self::TYPE_INT, 'validate' => 'isInt', 'size' => 500, 'required' => true),
+            'taille_differrence' => array('type' => self::TYPE_FLOAT, 'validate' => 'isUnsignedFloat', 'size' => 500),
+            'hanches' => array('type' => self::TYPE_FLOAT, 'validate' => 'isUnsignedFloat', 'size' => 500, 'required' => true),
             'hanches_evolution' => array('type' => self::TYPE_STRING, 'validate' => 'isString'),
-            'hanches_differrence' => array('type' => self::TYPE_INT, 'validate' => 'isInt', 'size' => 500),
-            'cuisse' => array('type' => self::TYPE_INT, 'validate' => 'isInt', 'size' => 500, 'required' => true),
+            'hanches_differrence' => array('type' => self::TYPE_FLOAT, 'validate' => 'isUnsignedFloat', 'size' => 500),
+            'cuisse' => array('type' => self::TYPE_FLOAT, 'validate' => 'isUnsignedFloat', 'size' => 500, 'required' => true),
             'cuisse_evolution' => array('type' => self::TYPE_STRING, 'validate' => 'isString', 'size' => 500),
-            'cuisse_differrence' => array('type' => self::TYPE_INT, 'validate' => 'isInt', 'size' => 500),
+            'cuisse_differrence' => array('type' => self::TYPE_FLOAT, 'validate' => 'isUnsignedFloat', 'size' => 500),
             'inputs_sante' => array('type' => self::TYPE_STRING, 'validate' => 'isString', 'size' => 500),
-            'sante_digestif' => array('type' => self::TYPE_STRING, 'validate' => 'isString', 'size' => 500),
-            'sante_transit' => array('type' => self::TYPE_STRING, 'validate' => 'isString', 'size' => 500),
-            'sante_stress' => array('type' => self::TYPE_STRING, 'validate' => 'isString', 'size' => 500),
-            'sante_fatigue' => array('type' => self::TYPE_STRING, 'validate' => 'isString', 'size' => 500),
-            'sante_sommeil' => array('type' => self::TYPE_STRING, 'validate' => 'isString', 'size' => 500),
-            'sante_medical' => array('type' => self::TYPE_STRING, 'validate' => 'isString', 'size' => 500),
             'sante_autre' => array('type' => self::TYPE_STRING, 'validate' => 'isString', 'size' => 1000),
             'activite_physique' => array('type' => self::TYPE_STRING, 'validate' => 'isString', 'size' => 500),
             'activite_physique_heure' => array('type' => self::TYPE_STRING, 'validate' => 'isString'),
@@ -136,6 +120,7 @@ class CarnetClass extends ObjectModel
             'programme_resolution' => array('type' => self::TYPE_STRING, 'validate' => 'isString'),
             'motivation' => array('type' => self::TYPE_INT, 'validate' => 'isInt'),
             'motivation_dernier_bilan' => array('type' => self::TYPE_STRING, 'validate' => 'isString'),
+            'hauteur_customer' => array('type' => self::TYPE_FLOAT, 'validate' => 'isUnsignedFloat'),
             'date_add' => array('type' => self::TYPE_DATE, 'validate' => 'isDate'),
             'date_upd' => array('type' => self::TYPE_DATE, 'validate' => 'isDate'),
         ),

@@ -149,6 +149,7 @@ class letsenscarnetaddcarnetModuleFrontController extends ModuleFrontController
             $data['programme_satisfaction_semaine_autre'] = Tools::getValue('programme_satisfaction_semaine_autre');
             $data['programme_resolution'] = Tools::getValue('programme_resolution');
             $data['motivation'] = Tools::getValue('motivation');
+            $data['hauteur_customer'] = Tools::getValue('hauteur_customer');
             $data['motivation_dernier_bilan'] = Tools::getValue('motivation_dernier_bilan');
 
             if (empty($data['poids']) || !Validate::isFloat($data['poids'])) {

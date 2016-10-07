@@ -18,12 +18,13 @@ function addColumn($object)
 {
     $sql = 'ALTER TABLE `' . _DB_PREFIX_ . $object->tableName . '`
      ADD COLUMN `inputs_sante` VARCHAR(255) NULL AFTER `cuisse_differrence`,
+     ADD COLUMN `hauteur_customer` DECIMAL(5,2) NULL AFTER `motivation_dernier_bilan`,
      MODIFY `taille` DECIMAL (5,2) NULL,
      MODIFY `taille_differrence` DECIMAL (5,2) NULL,
      MODIFY `hanches` DECIMAL (5,2) NULL,
      MODIFY `hanches_differrence` DECIMAL (5,2) NULL,
      MODIFY `cuisse` DECIMAL (5,2) NULL,
-     MODIFY `cuisse_differrence`  DECIMAL (5,2) NULL,     
+     MODIFY `cuisse_differrence`  DECIMAL (5,2) NULL    
      ';
 
     if (!Db::getInstance()->execute($sql)) {

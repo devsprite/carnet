@@ -10,9 +10,10 @@
 * On peut saisir des valeurs avec des millimètres.
 * Mise à jour des vues des carnets suite à upgrade bdd
 * Ajout des liens mes carnets et add carnet dans le block MyAccount
- 
+* Modification et suppression d'un carnet existant depuis l'interface client
+
 ## Reste à faire
-* Modification et suppression d'un carnet existant
+
 * Import fichier csv
 * Liens des carnets dans la fiche client
 * ajouter la saisi de la taille en hauteur des clients dans le formulaire

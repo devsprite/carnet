@@ -68,6 +68,23 @@
                 {else}{$smarty.now}{/if}">
             </div>
         </div>
+
+        <!-- Taille -->
+        <div class="form-group">
+            <p class="page-subheading">
+                Taille
+            </p>
+        </div>
+        <div class="form-group">
+            <label class="col-xs-4 {if isset($errors['hauteur_customer'])}{$errors['hauteur_customer']}{/if}"
+                   for="hauteur_customer">Quelle est votre taille ? (en mètre).</label>
+            <div class="col-xs-8">
+                <input type="number" id="hauteur_customer" name="hauteur_customer" step="0.01" placeholder="En mètre"
+                        value="{if isset($smarty.post.hauteur_customer)}{$smarty.post.hauteur_customer|escape:'htmlall':'utf-8'}{elseif isset($last_carnet['hauteur_customer'])}{$last_carnet['hauteur_customer']}{/if}">
+                <span id="errhauteur_customer" class=""></span>
+            </div>
+        </div>
+
         <!-- Mensuration - Poids -->
         <div class="form-group">
             <p class="page-subheading">
@@ -110,7 +127,7 @@
 
         <div class="form-group">
             <label class="col-xs-4 {if isset($errors['hanches'])}{$errors['hanches']}{/if}" for="hanches">Aujourd'hui,
-                quel est votre tour de hanches (en cm) ?</label>
+                quel est votre tour de hanches (En centimètres) ?</label>
             <div class="col-xs-8">
                 <input type="number" id="hanches" name="hanches" placeholder="En centimètres" step="0.1"
                        value="{if isset($smarty.post.hanches)}{$smarty.post.hanches|escape:'htmlall':'utf-8'}{/if}">
@@ -127,7 +144,7 @@
 
         <div class="form-group">
             <label class="col-xs-4 {if isset($errors['cuisse'])}{$errors['cuisse']}{/if}" for="cuisse">Aujourd'hui, quel
-                est votre tour de cuisse (en cm) ?</label>
+                est votre tour de cuisse (En centimètres) ?</label>
             <div class="col-xs-8">
                 <input type="number" id="cuisse" name="cuisse" placeholder="En centimètres" step="0.1"
                        value="{if isset($smarty.post.cuisse)}{$smarty.post.cuisse|escape:'htmlall':'utf-8'}{/if}">

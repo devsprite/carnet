@@ -110,6 +110,7 @@ class Letsenscarnet extends Module
             `programme_resolution` TEXT NULL,
             `motivation` INT (12) NULL,
             `motivation_dernier_bilan` VARCHAR (255) NULL,
+            `hauteur_customer` DECIMAL(5,2) NULL,
             `date_add` DATETIME NOT NULL,
             `date_upd` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
             PRIMARY KEY (`id_carnet`)
