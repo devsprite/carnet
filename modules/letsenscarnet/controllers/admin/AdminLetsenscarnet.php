@@ -325,7 +325,7 @@ class AdminLetsenscarnetController extends ModuleAdminController
             array('id_option' => 'Oui_comme_a_votre_habitude', 'name' => 'Oui, comme à votre habitude'),
             array('id_option' => 'Oui_vous_avez_fait_l_effort', 'name' => 'Oui, vous avez fait l\'effort'),
             array('id_option' => 'Pas_vraiment_mais_c_est_en_projet', 'name' => 'Pas vraiment, mais c\'est en projet'),
-            array('id_option' => 'Non_vous_etes_définitivement_faché(e)', 'name' => 'Pas vraiment, mais c\'est en projet'),
+            array('id_option' => 'Non_vous_etes_définitivement_faché(e)', 'name' => 'Non, vous êtes définitevement faché(e)'),
             array('id_option' => 'Non_vous_ne_pouvez_pas_pratiquer_d_activité_sportive', 'name' => 'Pas vraiment, mais c\'est en projet'),
         );
         $inputs[] = array(

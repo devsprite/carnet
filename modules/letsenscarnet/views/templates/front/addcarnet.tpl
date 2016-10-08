@@ -228,7 +228,7 @@
                 ?</label>
             <div class="col-xs-8">
                 <input type="time" id="activite_physique_heure" name="activite_physique_heure"
-                       value="{if isset($smarty.post.activite_physique_heure)}{$smarty.post.activite_physique_heure|escape:'htmlall':'utf-8'}{/if}">
+                       value="{if isset($smarty.post.activite_physique_heure)}{$smarty.post.activite_physique_heure|escape:'htmlall':'utf-8'}{else}00:00{/if}">
             </div>
         </div>
 
@@ -398,9 +398,8 @@
         <div class="form-group">
             <label for="alimentation_faim_autre" class="col-xs-4">Autre</label>
             <div class="col-xs-8">
-                <input type="text" id="alimentation_faim_autre"
-                       name="alimentation_faim_autre"
-                       value="{if isset($smarty.post.alimentation_faim_autre)}{$smarty.post.alimentation_faim_autre|escape:'htmlall':'utf-8'}{/if}">
+                <textarea type="text" id="alimentation_faim_autre"
+                       name="alimentation_faim_autre" >{if isset($smarty.post.alimentation_faim_autre)}{$smarty.post.alimentation_faim_autre|escape:'utf-8'}{/if}</textarea>
             </div>
         </div>
 
