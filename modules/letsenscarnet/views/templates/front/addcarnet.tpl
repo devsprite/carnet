@@ -147,7 +147,7 @@
                 est votre tour de cuisse (En centimètres) ?</label>
             <div class="col-xs-8">
                 <input type="number" id="cuisse" name="cuisse" placeholder="En centimètres" step="0.1"
-                       value="{if isset($smarty.post.cuisse)}{$smarty.post.cuisse|escape:'htmlall':'utf-8'}{/if}">
+                       value="{if isset($smarty.post.cuisse)}{$smarty.post.cuisse|escape:'truncatell':'utf-8'}{/if}">
                 <span id="errcuisse" class=""></span>
             </div>
         </div>
