@@ -52,7 +52,7 @@
                 <select id="name_contact" class="form-control" name="name_contact" class="col-xs-3">
                     <option value="0">{l s='-- Choisissez --'}</option>
                     {foreach from=$name_contacts item=contact}
-                        <option value="{$contact['id_contact']}"{if isset($smarty.post.name_contact) && $smarty.post.name_contact == $contact['id_contact']} selected="selected"{/if}>{$contact['name']|escape:'html':'UTF-8'}</option>
+                        <option value="{$contact['id_contact']}"{if isset($smarty.post.name_contact) && $smarty.post.name_contact == $contact['id_contact']} selected="selected"{/if}>{$contact['name']|escape:'UTF-8'}</option>
                     {/foreach}
                 </select>
             </div>
@@ -182,7 +182,7 @@
             <label class="col-xs-4 {if isset($errors['sante_autre'])}{$errors['sante_autre']}{/if}" for="sante_autre">Autre</label>
             <div class="col-xs-8">
                 <input id="sante_autre" name="sante_autre" type="text"
-                       value="{if isset($smarty.post.sante_autre)}{$smarty.post.sante_autre|escape:'htmlall':'utf-8'}{/if}">
+                       value="{if isset($smarty.post.sante_autre)}{$smarty.post.sante_autre|escape:'utf-8'}{/if}">
             </div>
         </div>
 
@@ -375,7 +375,7 @@
             <div class="col-xs-8">
             <textarea type="text" cols="40" rows="5" id="alimentation_plaisir"
                       name="alimentation_plaisir"
-            >{if isset($smarty.post.alimentation_plaisir)}{$smarty.post.alimentation_plaisir|escape:'htmlall':'utf-8'}{/if}</textarea>
+            >{if isset($smarty.post.alimentation_plaisir)}{$smarty.post.alimentation_plaisir|escape:'utf-8'}{/if}</textarea>
 
             </div>
         </div>
@@ -387,7 +387,7 @@
             <div class="col-xs-8">
             <textarea type="text" cols="40" rows="5" id="alimentation_frustration"
                       name="alimentation_frustration"
-            >{if isset($smarty.post.alimentation_frustration)}{$smarty.post.alimentation_frustration|escape:'htmlall':'utf-8'}{/if}</textarea>
+            >{if isset($smarty.post.alimentation_frustration)}{$smarty.post.alimentation_frustration|escape:'utf-8'}{/if}</textarea>
                 <p>Si votre sentiment de frustration est inférieur à votre sentiment de plaisir =</p>
                 <p>Si votre sentiment de frustration est égal à votre sentiment de plaisir =</p>
                 <p>Si votre sentiment de frustration est supérieur à votre sentiment de plaisir = </p>
@@ -475,7 +475,7 @@
             <div class="col-xs-8">
                 <input type="text" id="programme_satisfaction_semaine_autre"
                        name="programme_satisfaction_semaine_autre"
-                       value="{if isset($smarty.post.programme_satisfaction_semaine_autre)}{$smarty.post.programme_satisfaction_semaine_autre|escape:'htmlall':'utf-8'}{/if}">
+                       value="{if isset($smarty.post.programme_satisfaction_semaine_autre)}{$smarty.post.programme_satisfaction_semaine_autre|escape:'utf-8'}{/if}">
             </div>
         </div>
 
@@ -486,7 +486,7 @@
             <div class="col-xs-8">
                 <p>Votre objectif prioritaire pour la semaine à venir sera d'appliquer cette résolution.</p>
                 <textarea type="text" cols="40" rows="5" id="programme_resolution"
-                          name="programme_resolution">{if isset($smarty.post.programme_resolution)}{$smarty.post.programme_resolution|escape:'htmlall':'utf-8'}{/if}</textarea>
+                          name="programme_resolution">{if isset($smarty.post.programme_resolution)}{$smarty.post.programme_resolution|escape:'utf-8'}{/if}</textarea>
             </div>
         </div>
 
