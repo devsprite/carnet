@@ -176,7 +176,7 @@ class letsenscarnetaddcarnetModuleFrontController extends ModuleFrontController
             $this->errors['contact'] = $this->helperError($this->module->l('Erreur'));
         }
 
-            if ($data_pre['date_add'] >= $date_form) {
+            if (date('Y-m-d', strtotime($data_pre['date_add'])) == $date_form) {
                 $this->errors[] = Tools::displayError('Vous avez déjà enregistré un carnet de suivi aujourd\'hui.');
             }
 
