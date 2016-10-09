@@ -93,6 +93,12 @@ class letsenscarnetaddcarnetModuleFrontController extends ModuleFrontController
                 $data['date_add'] = date('Y-m-d H:i:s');
             }
 
+            if (empty($data['date_add']) || !Validate::isDate($data['date_add'])) {
+                $this->errors['date_add'] = $this->helperError($this->module->l('Erreur champ date'));
+            }
+//            var_dump($this->errors['date_add'] = $this->helperError($this->module->l('Erreur champ date')));
+//            ddd($data['date_add']);
+
             $data['id_customer'] = $customer->id;
             $data['customer_name'] = $customer->lastname . ' ' . $customer->firstname;
             $data['name_contact'] = (isset($contact->name[1])) ? $contact->name[1] : '';
@@ -232,7 +238,7 @@ class letsenscarnetaddcarnetModuleFrontController extends ModuleFrontController
 
     protected function helperError($error)
     {
-        return 'alert-danger';
+        return 'alert-danger ' . $error;
     }
 
     private function getContacts()
