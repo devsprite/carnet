@@ -58,7 +58,10 @@ class MailCarnetClass
     private function messageSynthese()
     {
         $message = '';
-        $message .= 'Aujourd\'hui vous êtes au poids de ' . $this->data['poids'] . ' kg.';
+        $message .= 'Aujourd\'hui vous êtes au poids de ' . $this->data['poids'] . ' kg.<br>';
+        $message .= 'Vous avez un tour de taille de ' . $this->data['taille'] . ' cm.<br>';
+        $message .= 'Vous avez un tour de hanches de ' . $this->data['hanches'] . ' cm.<br>';
+        $message .= 'Vous avez un tour de cuisse de ' . $this->data['poids'] . ' cm.<br>';
 
         return $message;
     }
