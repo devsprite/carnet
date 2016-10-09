@@ -70,7 +70,6 @@ class letsenscarnetaddcarnetModuleFrontController extends ModuleFrontController
         $_POST['name_contact'] = $carnet['id_contact'];
         $_POST['date_add'] = strtotime($carnet['date_add']);
 
-//        ddd($_POST);
     }
 
     private function addCarnet($id_carnet = null)
@@ -96,8 +95,6 @@ class letsenscarnetaddcarnetModuleFrontController extends ModuleFrontController
             if (empty($data['date_add']) || !Validate::isDate($data['date_add'])) {
                 $this->errors['date_add'] = $this->helperError($this->module->l('Erreur champ date'));
             }
-//            var_dump($this->errors['date_add'] = $this->helperError($this->module->l('Erreur champ date')));
-//            ddd($data['date_add']);
 
             $data['id_customer'] = $customer->id;
             $data['customer_name'] = $customer->lastname . ' ' . $customer->firstname;
