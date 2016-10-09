@@ -9,9 +9,7 @@
                 Ajouter un Carnet
             </a>
             {if !empty($carnets)}
-            <div>
-            </div>
-            <div id="" class="well">
+                <div id="" class="well">
                     <table class="table table-hover">
                         <thead>
                         <tr>
@@ -54,8 +52,8 @@
                         </tbody>
 
                     </table>
-                {/if}
-            </div>
+                </div>
+            {/if}
         </div>
     </div>
 </div>
