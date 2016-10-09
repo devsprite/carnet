@@ -16,7 +16,7 @@ class AdminLetsenscarnetController extends ModuleAdminController
         $this->context = Context::getContext();
         $this->_orderBy = 'date_add';
         $this->_orderWay = 'DESC';
-        $this->original_filter = '';cd mo
+        $this->original_filter = '';
 
         $this->fields_list = array(
             'id_carnet' => array(

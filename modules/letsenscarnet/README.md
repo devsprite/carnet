@@ -17,3 +17,4 @@
 
 ## Reste à faire
 * Import fichier csv
+* modification des réponse par defaut du 1er mail
