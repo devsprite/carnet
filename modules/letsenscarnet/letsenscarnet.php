@@ -87,7 +87,7 @@ class Letsenscarnet extends Module
             `inputs_sante` VARCHAR(255) NULL,
             `sante_autre` VARCHAR(1000) NULL,
             `activite_physique` VARCHAR (255) NULL,
-            `activite_physique_heure` TIME NULL,
+            `activite_physique_heure` VARCHAR (100),
             `alimentation_suivi` VARCHAR (255) NULL,
             `alimentation_complements_alimentaires` VARCHAR (255) NULL,
             `alimentation_eau_par_jour` VARCHAR (255) NULL,

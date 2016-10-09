@@ -61,11 +61,9 @@
 
         <div class="form-group">
             <p class="col-xs-4">Date du bilan :</p>
-            <div class="col-xs-8"> {if isset($smarty.post.date_add)}{$smarty.post.date_add|date_format:'%d-%m-%Y'}
-                {else}{$smarty.now|date_format:'%d-%m-%Y'}{/if}
-                <input type="hidden" name="date_form" value="{if isset($smarty.post.date_add)}
-                    {$smarty.post.date_add}
-                {else}{$smarty.now}{/if}">
+            <div class="col-xs-8">
+                <input type="date" name="date_form" value="{if isset($smarty.post.date_add)
+                }{$smarty.post.date_add|date_format:'%Y-%m-%d'}{else}{$smarty.now|date_format:'%Y-%m-%d'}{/if}">
             </div>
         </div>
 

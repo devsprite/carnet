@@ -13,6 +13,7 @@
 * Modification et suppression d'un carnet existant depuis l'interface client
 * ajouter la saisi de la taille en hauteur des clients dans le formulaire
 * Liens des carnets dans la fiche client
+* On peut modifier la date de saisi d'un carnet
 
 ## Reste à faire
 * Import fichier csv

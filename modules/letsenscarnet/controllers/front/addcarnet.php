@@ -68,6 +68,7 @@ class letsenscarnetaddcarnetModuleFrontController extends ModuleFrontController
         $_POST = $carnet;
         $_POST['inputs_sante'] = explode(',', $_POST['inputs_sante']);
         $_POST['name_contact'] = $carnet['id_contact'];
+        $_POST['date_add'] = strtotime($carnet['date_add']);
 
 //        ddd($_POST);
     }
