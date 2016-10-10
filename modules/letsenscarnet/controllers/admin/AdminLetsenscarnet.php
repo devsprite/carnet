@@ -119,14 +119,14 @@ class AdminLetsenscarnetController extends ModuleAdminController
     public function initPageHeaderToolbar()
     {
         if (!$this->display) {
-            $this->page_header_toolbar_btn['new'] = array(
-                'href' => self::$currentIndex . '&add' . $this->table . '&token=' . $this->token,
-                'desc' => $this->l('Add New')
-            );
+//            $this->page_header_toolbar_btn['new'] = array(
+//                'href' => self::$currentIndex . '&add' . $this->table . '&token=' . $this->token,
+//                'desc' => $this->l('Add New')
+//            );
         } else if ($this->display == 'view') {
-            $this->page_header_toolbar_btn['back'] = array(
+            $this->page_header_toolbar_btn['back_to_list'] = array(
                 'href' => self::$currentIndex . '&token=' . $this->token,
-                'desc' => $this->l('Back to the list')
+                'desc' => $this->l('Retourner à la liste')
             );
         }
 
