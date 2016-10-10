@@ -14,7 +14,8 @@
 * ajouter la saisi de la taille en hauteur des clients dans le formulaire
 * Liens des carnets dans la fiche client
 * On peut modifier la date de saisi d'un carnet
-
-## Reste à faire
 * Import fichier csv
 * modification des réponse par defaut du 1er mail
+
+## Reste à faire
+* Ajout d'icone et amélioration graphique

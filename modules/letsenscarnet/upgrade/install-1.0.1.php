@@ -7,7 +7,8 @@ function upgrade_module_1_0_1($object, $install = false)
     if (!addColumn($object) or
         !convertRecords($object) or
         !removeColumn($object) or
-        !$object->registerHook('displayMyAccountBlock')
+        !$object->registerHook('displayMyAccountBlock') or
+        !$object->registerHook('displayAdminCustomers')
     ) {
         return false;
     }
