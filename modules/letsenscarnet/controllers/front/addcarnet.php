@@ -16,7 +16,7 @@ class letsenscarnetaddcarnetModuleFrontController extends ModuleFrontController
         $customer = New Customer($this->context->customer->id);
         $this->context->controller->addJquery();
         $this->context->controller->addJS(_PS_MODULE_DIR_ . 'letsenscarnet/views/js/carnet.js');
-        $this->context->controller->addJS(_PS_MODULE_DIR_ . 'letsenscarnet/views/css/addcarnet.css');
+        $this->context->controller->addCSS(_PS_MODULE_DIR_ . 'letsenscarnet/views/css/addcarnet.css');
         $lastCarnet = $this->module->getLastCarnet($this->context->customer->id);
 
         $this->context->smarty->assign(array(
