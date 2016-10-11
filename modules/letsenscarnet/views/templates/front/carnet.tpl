@@ -86,7 +86,7 @@
 
         <div class="box">
             {if $carnet['alimentation_faim']}
-                <h4><strong>Cette semaine, avez-vous bien suivi la méthode diététique Ligne&Sens ?</strong></h4>
+                <h4><strong>Avez-vous eu faim ?</strong></h4>
                 {$carnet['alimentation_faim']}
             {/if}
             {if $carnet['alimentation_faim_autre']}

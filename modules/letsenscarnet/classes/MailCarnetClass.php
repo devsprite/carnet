@@ -61,7 +61,7 @@ class MailCarnetClass
         $message .= 'Aujourd\'hui vous êtes au poids de ' . $this->data['poids'] . ' kg.<br>';
         $message .= 'Vous avez un tour de taille de ' . $this->data['taille'] . ' cm.<br>';
         $message .= 'Vous avez un tour de hanches de ' . $this->data['hanches'] . ' cm.<br>';
-        $message .= 'Vous avez un tour de cuisse de ' . $this->data['poids'] . ' cm.<br>';
+        $message .= 'Vous avez un tour de cuisse de ' . $this->data['cuisse'] . ' cm.<br>';
 
         return $message;
     }
@@ -422,7 +422,7 @@ class MailCarnetClass
         $positif = ((int)$this->data['programme_satisfaction_resultat'] > 7) ? 'très' : '';
         $negatif = ((int)$this->data['programme_satisfaction_resultat'] < 3) ? 'du tout' : '';
 
-        if ((int)$this->data['programme_satisfaction_resultat'] > 5) {
+        if ((int)$this->data['programme_satisfaction_resultat'] >= 5) {
             $message .= 'Vous êtes ' . $positif . ' satifaite de vos résultats,';
             if ($this->data['programme_satisfaction_semaine'] == 'Oui') {
                 $message .= ' et de ce que vous avez accompli.';
@@ -451,7 +451,7 @@ class MailCarnetClass
         $positif = ((int)$this->data['motivation'] > 7) ? 'très' : '';
         $negatif = ((int)$this->data['motivation'] < 3) ? 'du tout' : '';
 
-        if ((int)$this->data['motivation'] > 5) {
+        if ((int)$this->data['motivation'] >= 5) {
             $message .= 'Vous êtes ' . $positif . ' motivée pour la semaine aui arrive.';
         } else {
             $message .= 'Vous n\'êtes pas ' . $negatif . ' motivée pour la semaine qui arrive.';

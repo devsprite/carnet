@@ -170,7 +170,6 @@
                             {if in_array($input_sante[0], $smarty.post.inputs_sante)}checked{/if}
                     {/if}>
                     {$input_sante[1]}
-
                 </label><br>
                 {/foreach}
             </div>
