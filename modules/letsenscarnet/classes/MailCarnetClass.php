@@ -452,7 +452,7 @@ class MailCarnetClass
         $negatif = ((int)$this->data['motivation'] < 3) ? 'du tout' : '';
 
         if ((int)$this->data['motivation'] >= 5) {
-            $message .= 'Vous êtes ' . $positif . ' motivée pour la semaine aui arrive.';
+            $message .= 'Vous êtes ' . $positif . ' motivée pour la semaine qui arrive.';
         } else {
             $message .= 'Vous n\'êtes pas ' . $negatif . ' motivée pour la semaine qui arrive.';
         }
