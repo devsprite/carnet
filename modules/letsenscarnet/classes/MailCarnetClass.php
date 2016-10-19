@@ -335,12 +335,12 @@ class MailCarnetClass
     private function messageAnalyseSuiviAlimentation()
     {
         $message = '';
-        if ($this->data['alimentation_suivi'] = 'Oui') {
+        if ($this->data['alimentation_suivi'] == 'Oui') {
             $message .= 'Vous avez suivi la méthode alimentaire avec facilité.';
         } else if ($this->data['alimentation_suivi'] == 'Non') {
-            $message .= 'Vous avez essayé mais vous avez eu du mal à appliquer la méthode alimentaire.';
+            $message .= 'Vous n\'avez pas l\'intention de suivre la méthode alimentaire.';
         } else {
-            $message .= 'Vous n\'avez pas l\'intention de suivre la méthode laimentaire.';
+            $message .= 'Vous avez essayé mais vous avez eu du mal à appliquer la méthode alimentaire.';
         }
 
         return $message;
@@ -349,7 +349,7 @@ class MailCarnetClass
     private function messageAnalyseComplement()
     {
         $message = '';
-        if ($this->data['alimentation_complements_alimentaires'] = 'Oui') {
+        if ($this->data['alimentation_complements_alimentaires'] == 'Oui') {
             $message .= 'Vous avez bien pris vos compléments selon les dosages préconisés par votre coach.';
         } else {
             $message .= 'Vous n\'avez pas pris vos compléments selon les dosages préconisés par votre coach.';
@@ -361,7 +361,7 @@ class MailCarnetClass
     private function messageAnalyseEauParJour()
     {
         $message = '';
-        if ($this->data['alimentation_eau_par_jour'] = 'Oui') {
+        if ($this->data['alimentation_eau_par_jour'] == 'Oui') {
             $message .= 'Vous avez bu au moins 1,5 litre d\'eau par jour.';
         } else {
             $message .= 'Vous n\'avez pas suffisament bu d\'eau par jour.';
@@ -373,10 +373,10 @@ class MailCarnetClass
     private function messageAnalyseMangeEntreRepas()
     {
         $message = '';
-        if ($this->data['alimentation_mange_entre_repas'] = 'Oui collation') {
+        if ($this->data['alimentation_mange_entre_repas'] == 'Oui_collation') {
             $message .= 'Vous avez eu faim, et pris des collations.';
-        } else if ($this->data['alimentation_mange_entre_repas'] = 'Oui grignote') {
-            $message .= 'Vosu avez grignoté.';
+        } else if ($this->data['alimentation_mange_entre_repas'] == 'Oui_grignote') {
+            $message .= 'Vous avez grignoté.';
         } else {
             $message .= 'Vous n\'avez pas mangé entre les repas.';
         }
