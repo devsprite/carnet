@@ -180,8 +180,8 @@ class Letsenscarnet extends Module
 
     public function getLastCarnet($id_customer)
     {
-        $sql = 'SELECT * FROM `' . _DB_PREFIX_ . $this->tableName . '` WHERE id_customer = ' . pSQL($id_customer)
-            . ' ORDER BY date_add DESC';
+        $sql = 'SELECT * FROM `' . _DB_PREFIX_ . $this->tableName . '` 
+        WHERE id_customer = ' . pSQL($id_customer) . ' AND date_add < NOW() ORDER BY date_add DESC';
         return Db::getInstance()->getRow($sql);
     }
 

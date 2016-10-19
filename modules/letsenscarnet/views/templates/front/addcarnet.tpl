@@ -10,6 +10,7 @@
 <p>{$mails['{message_cuisse}']}</p>
 <p>{$mails['{message_sante}']}</p>
 <p>{$mails['{message_activite_physique}']}</p>
+<p>{$mails['{alimentation_faim}']}</p>
 <p>{$mails['{message_alimentation_suivi}']}</p>
 <p>{$mails['{message_alimentation_complements_alimentaires}']}</p>
 <p>{$mails['{message_alimentation_eau_par_jour}']}</p>
@@ -62,7 +63,7 @@
         <div class="form-group">
             <p class="col-xs-4">Date du bilan :</p>
             <div class="col-xs-8">
-                <input type="date" name="date_form" value="{if isset($smarty.post.date_add)
+                <input type="date" name="date_add" value="{if isset($smarty.post.date_add)
                 }{$smarty.post.date_add|date_format:'%Y-%m-%d'}{else}{$smarty.now|date_format:'%Y-%m-%d'}{/if}">
             </div>
         </div>

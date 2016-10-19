@@ -42,6 +42,7 @@ class MailCarnetClass
         $params['{message_cuisse}'] = $this->messageCuisse();
         $params['{message_sante}'] = $this->messageSante();
         $params['{message_activite_physique}'] = $this->messageActivitePhysique();
+        $params['{alimentation_faim}'] = $this->messageAlimentationFaim();
         $params['{message_alimentation_suivi}'] = $this->messageAlimentationSuivi();
         $params['{message_alimentation_complements_alimentaires}'] = $this->messageAlimentationComplement();
         $params['{message_alimentation_eau_par_jour}'] = $this->messageAlimentationEau();
@@ -108,6 +109,13 @@ class MailCarnetClass
     private function messageActivitePhysique()
     {
         $message = (!empty($this->data['activite_physique'])) ? $this->messageAnalyseActivitePhysique() : '';
+
+        return $message;
+    }
+
+    private function messageAlimentationFaim()
+    {
+        $message = (!empty($this->data['alimentation_faim'])) ? $this->messageAnalyseAlimentationFaim() : '';
 
         return $message;
     }
@@ -180,7 +188,7 @@ class MailCarnetClass
     {
         $message = '';
         if ($this->data_pre['poids_differrence']) {
-            $message = 'Depuis votre dernier bilan du ' . date('j-m-Y', strtotime($this->data_pre['date_upd'])) . ', ';
+            $message = 'Depuis votre dernier bilan du ' . date('j-m-Y', strtotime($this->data_pre['date_add'])) . ', ';
 
             if (floatval($this->data['poids_differrence']) === floatval(0)) {
                 $message .= ' vous avez stagné.';
@@ -277,60 +285,18 @@ class MailCarnetClass
         return $message;
     }
 
-
-    private function messageSanteDigestif()
+    private function messageAnalyseAlimentationFaim()
     {
         $message = '';
-        if (!empty($this->data['sante_digestif'])) {
-            $message = '<li>Durant la semaine écoulée, vous avez eu des troubles digestifs.</li>';
+        if ($this->data['alimentation_faim'] == 'Oui') {
+            $message .= 'Vous avez eu faim.';
+        } else if ($this->data['alimentation_faim'] == 'Non') {
+            $message .= 'Vous n\'avez pas eu faim.';
         }
+
         return $message;
     }
 
-    private function messageSanteTransit()
-    {
-        $message = '';
-        if (!empty($this->data['sante_transit'])) {
-            $message = '<li>Durant la semaine écoulée, vous avez eu des problèmes de transit</li>';
-        }
-        return $message;
-    }
-
-    private function messageSanteStress()
-    {
-        $message = '';
-        if (!empty($this->data['sante_stress'])) {
-            $message = '<li>Durant la semaine écoulée, vous avez été particulièrement stressé(e)</li>';
-        }
-        return $message;
-    }
-
-    private function messageSanteFatigue()
-    {
-        $message = '';
-        if (!empty($this->data['sante_fatigue'])) {
-            $message = '<li>Durant la semaine écoulée, vous avez été particulièrement fatigué(e)</li>';
-        }
-        return $message;
-    }
-
-    private function messageSanteSommeil()
-    {
-        $message = '';
-        if (!empty($this->data['sante_sommeil'])) {
-            $message = '<li>Durant la semaine écoulée, vous avez eu des problèmes de sommeil</li>';
-        }
-        return $message;
-    }
-
-    private function messageSanteMedical()
-    {
-        $message = '';
-        if (!empty($this->data['sante_medical'])) {
-            $message = '<li>Durant la semaine écoulée, vous avez eu un problème de santé</li>';
-        }
-        return $message;
-    }
 
     private function messageAnalyseSuiviAlimentation()
     {

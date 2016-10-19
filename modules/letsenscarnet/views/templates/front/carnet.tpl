@@ -97,7 +97,7 @@
                 <h4><strong>Cette semaine, avez-vous bien suivi la méthode diététique Ligne&Sens ?</strong></h4>
                 {if $carnet['alimentation_suivi'] == 'Oui'}<p>Oui</p>{/if}
                 {if $carnet['alimentation_suivi'] == 'Non'}<p>Non, je n'ai pas l'intention de la suivre</p>{/if}
-                {if $carnet['alimentation_suivi'] == '<p>J_essai_mais_difficile'}J'essaie, mais c'est parfois difficile</p>{/if}
+                {if $carnet['alimentation_suivi'] == 'J_essai_mais_difficile'}J'essaie, mais c'est parfois difficile</p>{/if}
             {/if}
             {if $carnet['alimentation_complements_alimentaires']}
                 <h4><strong>Avez-vous pris vos compléments alimentaires L&Sens régulièrement ?</strong></h4>
