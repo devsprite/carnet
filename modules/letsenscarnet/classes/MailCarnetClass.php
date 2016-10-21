@@ -60,9 +60,12 @@ class MailCarnetClass
     {
         $message = '';
         $message .= 'Aujourd\'hui vous êtes au poids de ' . $this->data['poids'] . ' kg.<br>';
-        $message .= 'Vous avez un tour de taille de ' . $this->data['taille'] . ' cm.<br>';
-        $message .= 'Vous avez un tour de hanches de ' . $this->data['hanches'] . ' cm.<br>';
-        $message .= 'Vous avez un tour de cuisse de ' . $this->data['cuisse'] . ' cm.<br>';
+        $message .= ($this->data['taille'] > 10)
+            ? ('Vous avez un tour de taille de ' . $this->data['taille'] . ' cm.<br>') : '';
+        $message .= ($this->data['hanches'] > 10)
+            ? 'Vous avez un tour de hanches de ' . $this->data['hanches'] . ' cm.<br>' : '';
+        $message .= ($this->data['cuisse'] > 10)
+            ? 'Vous avez un tour de cuisse de ' . $this->data['cuisse'] . ' cm.<br>' : '';
 
         return $message;
     }
@@ -205,52 +208,57 @@ class MailCarnetClass
     private function messageDifferrenceTaille()
     {
         $message = '';
-        if ($this->data_pre['taille']) {
+        if ($this->data['taille'] != 0 ) {
+            if ($this->data_pre['taille']) {
 
-            if (floatval($this->data['taille_differrence']) === floatval(0)) {
-                $message .= 'Votre taille n\'a pas changée.';
-            } else if (floatval($this->data['taille_differrence']) > floatval(0)) {
-                $message .= 'Votre taille a augmentée de ' . floatval($this->data['taille_differrence']) . ' cm.';
-            } else {
-                $message .= 'Votre taille a diminuée de ' . abs(floatval($this->data['taille_differrence'])) . ' cm. Bravo pour vos efforts.';
+                if (floatval($this->data['taille_differrence']) === floatval(0)) {
+                    $message .= 'Votre taille n\'a pas changée.';
+                } else if (floatval($this->data['taille_differrence']) > floatval(0)) {
+                    $message .= 'Votre taille a augmentée de ' . floatval($this->data['taille_differrence']) . ' cm.';
+                } else {
+                    $message .= 'Votre taille a diminuée de ' . abs(floatval($this->data['taille_differrence'])) . ' cm. Bravo pour vos efforts.';
+                }
             }
-            return $message;
         }
 
+        return $message;
     }
 
     private function messageDifferrenceHanches()
     {
         $message = '';
-        if ($this->data_pre['hanches']) {
+        if ($this->data['hanches'] != 0) {
+            if ($this->data_pre['hanches']) {
 
-            if (floatval($this->data['hanches_differrence']) === floatval(0)) {
-                $message .= 'Votre tour de hanches n\'a pas changée.';
-            } else if (floatval($this->data['hanches_differrence']) > floatval(0)) {
-                $message .= 'Votre tour de hanches a augmentée de ' . floatval($this->data['hanches_differrence']) . ' cm.';
-            } else {
-                $message .= 'Votre tour de hanches a diminuée de ' . abs(floatval($this->data['hanches_differrence'])) . ' cm. Bravo pour vos efforts.';
+                if (floatval($this->data['hanches_differrence']) === floatval(0)) {
+                    $message .= 'Votre tour de hanches n\'a pas changée.';
+                } else if (floatval($this->data['hanches_differrence']) > floatval(0)) {
+                    $message .= 'Votre tour de hanches a augmentée de ' . floatval($this->data['hanches_differrence']) . ' cm.';
+                } else {
+                    $message .= 'Votre tour de hanches a diminuée de ' . abs(floatval($this->data['hanches_differrence'])) . ' cm. Bravo pour vos efforts.';
+                }
             }
-            return $message;
         }
 
+        return $message;
     }
 
     private function messageDifferrenceCuisse()
     {
         $message = '';
-        if ($this->data_pre['cuisse']) {
-
-            if (floatval($this->data['cuisse_differrence']) === floatval(0)) {
-                $message .= 'Votre tour de cuisse n\'a pas changé.';
-            } else if (floatval($this->data['cuisse_differrence']) > floatval(0)) {
-                $message .= 'Votre tour de cuisse a augmenté de ' . floatval($this->data['cuisse_differrence']) . ' cm.';
-            } else {
-                $message .= 'Votre tour de cuisse a diminué de ' . abs(floatval($this->data['cuisse_differrence'])) . ' cm. Bravo pour vos efforts.';
+        if ($this->data['cuisse'] != 0) {
+            if ($this->data_pre['cuisse']) {
+                if (floatval($this->data['cuisse_differrence']) === floatval(0)) {
+                    $message .= 'Votre tour de cuisse n\'a pas changé.';
+                } else if (floatval($this->data['cuisse_differrence']) > floatval(0)) {
+                    $message .= 'Votre tour de cuisse a augmenté de ' . floatval($this->data['cuisse_differrence']) . ' cm.';
+                } else {
+                    $message .= 'Votre tour de cuisse a diminué de ' . abs(floatval($this->data['cuisse_differrence'])) . ' cm. Bravo pour vos efforts.';
+                }
             }
-            return $message;
         }
 
+        return $message;
     }
 
     private function messageAnalyseActivitePhysique()

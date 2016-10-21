@@ -42,23 +42,6 @@ jQuery(document).ready(function ($) {
             err(form.poids, 'Merci d\'indiquer votre poids atuel.');
         }
 
-
-        if (form.taille.value == '') {
-            valide = false;
-            err(form.taille, 'Merci d\'indiquer votre taille actuelle.');
-
-        }
-
-        if (form.hanches.value == '') {
-            valide = false;
-            err(form.hanches, 'Merci d\'indiquer votre tour de hanches actuel.');
-        }
-
-        if (form.cuisse.value == '') {
-            valide = false;
-            err(form.cuisse, 'Merci d\'indiquer votre tour de cuisse.');
-        }
-
         if (!valide) {
             e.preventDefault();
             goToByScroll('bilan');

@@ -88,9 +88,9 @@
             <div class="box">
                 <p class="">Carnet rempli le {$carnet.date_add|date_format:"%x"}</p>
                 <p class="">Poids : {$carnet.poids} kg</p>
-                <p class="">Taille : {$carnet.taille} cm</p>
-                <p class="">Hanches : {$carnet.hanches} cm</p>
-                <p class="">Cuisse : {$carnet.cuisse} cm</p>
+                <p class="">{if $carnet.taille != 0}Taille : {$carnet.taille} cm{/if}&nbsp;</p>
+                <p class="">{if $carnet.hanches != 0}Hanches : {$carnet.hanches} cm{/if}&nbsp;</p>
+                <p class="">{if $carnet.cuisse != 0}Cuisse : {$carnet.cuisse} cm{/if}&nbsp;</p>
             </div>
         </a>
     </div>

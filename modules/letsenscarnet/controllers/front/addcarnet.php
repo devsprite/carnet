@@ -160,27 +160,28 @@ class letsenscarnetaddcarnetModuleFrontController extends ModuleFrontController
                 $this->errors['poids'] = $this->helperError($this->module->l('Erreur champ poids'));
             }
 
-            if (empty($data['taille']) || !Validate::isFloat($data['taille'])) {
-                $this->errors['taille'] = $this->helperError($this->module->l('Erreur champ taille'));
-            }
-
-            if (empty($data['hanches']) || !Validate::isFloat($data['hanches'])) {
-                $this->errors['hanches'] = $this->helperError($this->module->l('Erreur champ hanches'));
-            }
-
-            if (empty($data['cuisse']) || !Validate::isFloat($data['cuisse'])) {
-                $this->errors['cuisse'] = $this->helperError($this->module->l('Erreur champ cuisse'));
-            }
+//            if (empty($data['taille']) || !Validate::isFloat($data['taille'])) {
+//                $this->errors['taille'] = $this->helperError($this->module->l('Erreur champ taille'));
+//            }
+//
+//            if (empty($data['hanches']) || !Validate::isFloat($data['hanches'])) {
+//                $this->errors['hanches'] = $this->helperError($this->module->l('Erreur champ hanches'));
+//            }
+//
+//            if (empty($data['cuisse']) || !Validate::isFloat($data['cuisse'])) {
+//                $this->errors['cuisse'] = $this->helperError($this->module->l('Erreur champ cuisse'));
+//            }
 
             $message = 'Nouveau carnet de suivi, rempli par ' . $data['customer_name'];
         } else {
             $this->errors['contact'] = $this->helperError($this->module->l('Erreur'));
         }
 
-            if (date('Y-m-d 00:00:00', strtotime($data_pre['date_add']))
-                == date('Y-m-d 00:00:00', strtotime($data['date_add'])) && $id_carnet == null) {
-                $this->errors[] = Tools::displayError('Vous avez déjà enregistré un carnet de suivi aujourd\'hui.');
-            }
+        if (date('Y-m-d 00:00:00', strtotime($data_pre['date_add']))
+            == date('Y-m-d 00:00:00', strtotime($data['date_add'])) && $id_carnet == null
+        ) {
+            $this->errors[] = Tools::displayError('Vous avez déjà enregistré un carnet de suivi aujourd\'hui.');
+        }
 
         if (!$this->errors) {
 
@@ -262,20 +263,23 @@ class letsenscarnetaddcarnetModuleFrontController extends ModuleFrontController
     private function evolution($value, $value_pre)
     {
         $val = '';
+        if (!empty($value)) {
 
-        if (floatval($value) > floatval($value_pre)) {
-            $val = 'augmenté';
-        } else if (floatval($value) < floatval($value_pre)) {
-            $val = 'diminué';
-        } else {
-            $val = 'stagné';
+            if (floatval($value) > floatval($value_pre)) {
+                $val = 'augmenté';
+            } else if (floatval($value) < floatval($value_pre)) {
+                $val = 'diminué';
+            } else {
+                $val = 'stagné';
+            }
         }
         return $val;
     }
 
     private function differrence($value, $value_pre)
     {
-        return floatval($value) - floatval($value_pre);
+        $v = (!empty($value)) ? floatval($value) - floatval($value_pre) : '';
+        return $v;
     }
 
     /**
