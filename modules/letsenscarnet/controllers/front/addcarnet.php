@@ -87,11 +87,11 @@ class letsenscarnetaddcarnetModuleFrontController extends ModuleFrontController
             $customer = New Customer($this->context->customer->id);
             $date_form = date('Y-m-d H:i:s');
 
-            if ($id_carnet) {
-                $data['date_add'] = Tools::getValue('date_add');
-            } else {
-                $data['date_add'] = date('Y-m-d H:i:s');
-            }
+            $data['date_add'] = Tools::getValue('date_add');
+//            if ($id_carnet) {
+//            } else {
+//                $data['date_add'] = date('Y-m-d H:i:s');
+//            }
 
             if (empty($data['date_add']) || !Validate::isDate($data['date_add'])) {
                 $this->errors['date_add'] = $this->helperError($this->module->l('Erreur champ date'));
@@ -180,7 +180,7 @@ class letsenscarnetaddcarnetModuleFrontController extends ModuleFrontController
         if (date('Y-m-d 00:00:00', strtotime($data_pre['date_add']))
             == date('Y-m-d 00:00:00', strtotime($data['date_add'])) && $id_carnet == null
         ) {
-            $this->errors[] = Tools::displayError('Vous avez déjà enregistré un carnet de suivi aujourd\'hui.');
+            $this->errors[] = Tools::displayError('Vous avez déjà enregistré un carnet de suivi.');
         }
 
         if (!$this->errors) {
