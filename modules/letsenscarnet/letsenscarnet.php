@@ -178,10 +178,17 @@ class Letsenscarnet extends Module
         return $this->display(__FILE__, 'addcarnet.tpl');
     }
 
-    public function getLastCarnet($id_customer)
+    public function getLastCarnet($id_customer, $date_add = null)
     {
+        if ($date_add == null) {
+            $date_add = 'NOW()';
+        } else {
+            $date_add = '"'. pSQL($date_add) . '"';
+        }
+
         $sql = 'SELECT * FROM `' . _DB_PREFIX_ . $this->tableName . '` 
-        WHERE id_customer = ' . pSQL($id_customer) . ' AND date_add < NOW() ORDER BY date_add DESC';
+        WHERE id_customer = ' . pSQL($id_customer) . ' AND date_add < ' . $date_add . ' ORDER BY date_add DESC';
+
         return Db::getInstance()->getRow($sql);
     }
 
@@ -206,13 +213,14 @@ class Letsenscarnet extends Module
         return Db::getInstance()->getRow($sql);
     }
 
-    public function getInputsSante() {
+    public function getInputsSante()
+    {
         return $this->inputs_sante;
     }
 
     public function formatInputsSante($param)
     {
-        if (!$param){
+        if (!$param) {
             return false;
         }
 

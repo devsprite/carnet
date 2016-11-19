@@ -83,19 +83,15 @@ class letsenscarnetaddcarnetModuleFrontController extends ModuleFrontController
 
             $contact = $this->getEmployeeName(Tools::getValue('name_contact'));
 
-            $data_pre = $this->module->getLastCarnet($this->context->customer->id);
-            $customer = New Customer($this->context->customer->id);
-            $date_form = date('Y-m-d H:i:s');
-
             $data['date_add'] = Tools::getValue('date_add');
-//            if ($id_carnet) {
-//            } else {
-//                $data['date_add'] = date('Y-m-d H:i:s');
-//            }
 
             if (empty($data['date_add']) || !Validate::isDate($data['date_add'])) {
                 $this->errors['date_add'] = $this->helperError($this->module->l('Erreur champ date'));
+            } else {
+                $data_pre = $this->module->getLastCarnet($this->context->customer->id, $data['date_add']);
             }
+
+            $customer = New Customer($this->context->customer->id);
 
             $data['id_customer'] = $customer->id;
             $data['customer_name'] = $customer->lastname . ' ' . $customer->firstname;
